@@ -10,19 +10,26 @@ namespace Testing
     {
        
 
-            static void Main(string[] args)
+           /* static void Main(string[] args)
             {
-               // RandomNumbers()
-                //LetterList()
-            Console.WriteLine(RandomNumbers());
+           //// RandomNumbers();
+
+           // LetterList();
+           // Console.WriteLine(Dewey.ToString());
             Console.WriteLine(LetterList());
             Console.ReadLine();
 
+           
 
 
 
-               }
+
+
+               }*/
         private static Random rnd = new Random();
+
+        public static List<int> Dewey { get; private set; }
+
         //Generate 100 random numbers
         public static void ListJoin()
         {
@@ -35,7 +42,7 @@ namespace Testing
                
                 string newLine = Environment.NewLine;
                 int nums = rnd.Next(100, 1000);
-                var Dewey = new List<int>();
+                 Dewey = new List<int>();
                 // txtNumbers.Text = nums.ToString();
                 for (int i = 1; i <= 10; i++)
                 {
@@ -68,6 +75,7 @@ namespace Testing
             
         }
            
+       
         }
     }
     //

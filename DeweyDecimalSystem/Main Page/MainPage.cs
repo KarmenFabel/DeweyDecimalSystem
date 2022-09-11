@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,6 +8,8 @@ namespace DeweyDecimalSystem
 {
     public partial class MainPage : Form
     {
+      
+
         public MainPage()
         {
             InitializeComponent();

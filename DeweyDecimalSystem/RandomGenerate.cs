@@ -10,39 +10,23 @@ namespace DeweyDecimalSystem
     {
 
         //Generate 100 random numbers
-        static void RandomNumbers()
+        
+        private static Random rnd = new Random();
+        public static List<int> RandomNumbers()
         {
-            Random rnd = new Random();
             string newLine = Environment.NewLine;
-            int nums = rnd.Next(0, 1001);
+            int nums = rnd.Next(100, 1000);
             var Dewey = new List<int>();
-            // txtNumbers.Text = nums.ToString();
-            Dewey.Add(1);
-            Dewey.Add(2);
-            Dewey.Add(3);
+
             for (int i = 1; i <= 10; i++)
             {
-                nums = rnd.Next(0, 1001);
-                //txtNumbers.Text = txtNumbers.Text + newLine + nums.ToString();
-               // Dewey.Add(nums);
+                nums = rnd.Next(100, 1000);
+                Dewey.Add(nums);
             }
-           // for (int i = 0; i < Dewey.Count; i++)
-
-                Console.WriteLine(Dewey);
-            Console.ReadLine();
-
+            for (int i = 0; i < Dewey.Count; i++) ;
+            return Dewey;
         }
-        static void DeweyList()
-        {
-            List<Decimal> Dewey = new List<Decimal>();
 
-            for(float i = 1f; i <= 3f; i +=0.5f)
-            {
-                //nums
-            }
-        }
-        
-       
     }
 }
 //
