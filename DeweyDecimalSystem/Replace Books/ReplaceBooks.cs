@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeweyDecimalSystem.Replace_Books;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,24 +14,27 @@ namespace DeweyDecimalSystem
 {
     public partial class ReplaceBooks : Form
     {
-        
+
+        private Point start;
 
         public ReplaceBooks()
         {
-            
+
+
+
 
             InitializeComponent();
             // MessageBox.Show(Dewey.ToString());
             LabelsToList();
-            if (book1.Location == panel1.Location)
+           /* if (panel1.Location == paneltest.Location)
             {
                 MessageBox.Show("dragged over");
 
             }
-            if (panel1.Controls.Count > 1)
+            if (panel1.Controls.Count > 0)
             {
                 MessageBox.Show("dragged over");
-            }
+            }*/
 
             //Controls.Add(panel1);
         }
@@ -138,23 +142,57 @@ namespace DeweyDecimalSystem
             }
         }
 
-        private void testpanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            testpanel.DoDragDrop(testpanel.Text, DragDropEffects.Copy |
-             DragDropEffects.Move);
-        }
-
-        private void panel1_DragEnter(object sender, DragEventArgs e)
+        private void ReplaceBooks_Load(object sender, EventArgs e)
         {
 
-            if (e.Data.GetDataPresent(DataFormats.))
         }
 
-        private void panel1_DragDrop(object sender, DragEventArgs e)
+      
+
+     
+
+        private void ReplaceBooks_MouseUp(object sender, MouseEventArgs e)
         {
-            label11.Text = e.Data.GetData(DataFormats.Text).ToString();
+           /* if (sender != null && sender.GetType() == typeof(Panel))
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //PictureBox answer = (PictureBox)sender;
+
+                    if (paneltest.Location.X < panel1.Location.X && paneltest.Location.Y > panel1.Location.Y)
+                    {
+                        if (paneltest.Location.X + paneltest.Width > panel1.Location.X)
+                        {
+                            if ((paneltest.Location.X + paneltest.Width) < panel1.Location.X + panel1.Width)
+                            {
+                                paneltest.Location = panel1.Location;
+                            }
+                        }
+                    }
+                    else if (paneltest.Location.X < panel1.Location.X && paneltest.Location.Y > panel1.Location.Y)
+                    {
+                        if (paneltest.Location.X + paneltest.Width > panel1.Location.X)
+                        {
+                            if ((paneltest.Location.X + paneltest.Width) < panel1.Location.X + panel1.Width)
+                            {
+                                paneltest.Location = panel1.Location;
+                            }
+                        }
+                    }
+                }
+            }
+            if (panel1.Location == paneltest.Location)
+            {
+                MessageBox.Show("dragged over");
+
+            }
+            if (panel1.Controls.Count > 0)
+            {
+                MessageBox.Show("dragged over");
+            }*/
         }
+
+
     }
-    
 }
 //https://www.youtube.com/watch?v=YPGzfDN8-SA&list=TLPQMTEwOTIwMjIYnSeACSiecg&index=2&ab_channel=ClintonDaniel

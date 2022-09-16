@@ -34,7 +34,6 @@ namespace DeweyDecimalSystem
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,8 +55,8 @@ namespace DeweyDecimalSystem
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.testpanel = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.Book2 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
+            this.lblbook2 = new System.Windows.Forms.Label();
             this.Book7 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
             this.lblbook7 = new System.Windows.Forms.Label();
             this.Book10 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
@@ -74,13 +73,22 @@ namespace DeweyDecimalSystem
             this.lblbook4 = new System.Windows.Forms.Label();
             this.Book3 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
             this.lblbook3 = new System.Windows.Forms.Label();
-            this.Book2 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
-            this.lblbook2 = new System.Windows.Forms.Label();
             this.book1 = new DeweyDecimalSystem.Replace_Books.CustomGroupBox(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblbook1 = new System.Windows.Forms.Label();
+            this.paneltest = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -92,7 +100,7 @@ namespace DeweyDecimalSystem
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.testpanel.SuspendLayout();
+            this.Book2.SuspendLayout();
             this.Book7.SuspendLayout();
             this.Book10.SuspendLayout();
             this.Book9.SuspendLayout();
@@ -101,8 +109,17 @@ namespace DeweyDecimalSystem
             this.Book5.SuspendLayout();
             this.Book4.SuspendLayout();
             this.Book3.SuspendLayout();
-            this.Book2.SuspendLayout();
-            this.book1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
+            this.flowLayoutPanel9.SuspendLayout();
+            this.paneltest.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -113,7 +130,7 @@ namespace DeweyDecimalSystem
             this.mainToolStrip});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(739, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
@@ -134,22 +151,10 @@ namespace DeweyDecimalSystem
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(67, 83);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(92, 157);
-            this.panel1.TabIndex = 3;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(-3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 8;
@@ -330,34 +335,35 @@ namespace DeweyDecimalSystem
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(646, 416);
+            this.pictureBox1.Size = new System.Drawing.Size(739, 520);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // testpanel
+            // Book2
             // 
-            this.testpanel.Controls.Add(this.label11);
-            this.testpanel.Location = new System.Drawing.Point(521, 207);
-            this.testpanel.Name = "testpanel";
-            this.testpanel.Size = new System.Drawing.Size(43, 130);
-            this.testpanel.TabIndex = 33;
-            this.testpanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.testpanel_MouseDown);
+            this.Book2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Book2.Controls.Add(this.lblbook2);
+            this.Book2.Location = new System.Drawing.Point(164, 259);
+            this.Book2.Name = "Book2";
+            this.Book2.Size = new System.Drawing.Size(29, 99);
+            this.Book2.TabIndex = 29;
+            this.Book2.TabStop = false;
             // 
-            // label11
+            // lblbook2
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "label11";
+            this.lblbook2.AutoSize = true;
+            this.lblbook2.BackColor = System.Drawing.Color.Transparent;
+            this.lblbook2.Location = new System.Drawing.Point(0, 43);
+            this.lblbook2.Name = "lblbook2";
+            this.lblbook2.Size = new System.Drawing.Size(13, 13);
+            this.lblbook2.TabIndex = 19;
+            this.lblbook2.Text = "2";
             // 
             // Book7
             // 
-            this.Book7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book7.BackgroundImage")));
             this.Book7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book7.Controls.Add(this.lblbook7);
             this.Book7.Location = new System.Drawing.Point(339, 258);
@@ -378,7 +384,6 @@ namespace DeweyDecimalSystem
             // 
             // Book10
             // 
-            this.Book10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book10.BackgroundImage")));
             this.Book10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book10.Controls.Add(this.lblbook10);
             this.Book10.Location = new System.Drawing.Point(447, 258);
@@ -399,7 +404,6 @@ namespace DeweyDecimalSystem
             // 
             // Book9
             // 
-            this.Book9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book9.BackgroundImage")));
             this.Book9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book9.Controls.Add(this.lblbook9);
             this.Book9.Location = new System.Drawing.Point(409, 258);
@@ -420,7 +424,6 @@ namespace DeweyDecimalSystem
             // 
             // Book8
             // 
-            this.Book8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book8.BackgroundImage")));
             this.Book8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book8.Controls.Add(this.lblbook8);
             this.Book8.Location = new System.Drawing.Point(374, 258);
@@ -441,7 +444,6 @@ namespace DeweyDecimalSystem
             // 
             // Book6
             // 
-            this.Book6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book6.BackgroundImage")));
             this.Book6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book6.Controls.Add(this.lblbook6);
             this.Book6.Location = new System.Drawing.Point(304, 258);
@@ -462,7 +464,6 @@ namespace DeweyDecimalSystem
             // 
             // Book5
             // 
-            this.Book5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book5.BackgroundImage")));
             this.Book5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book5.Controls.Add(this.lblbook5);
             this.Book5.Location = new System.Drawing.Point(269, 258);
@@ -483,7 +484,6 @@ namespace DeweyDecimalSystem
             // 
             // Book4
             // 
-            this.Book4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book4.BackgroundImage")));
             this.Book4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book4.Controls.Add(this.lblbook4);
             this.Book4.Location = new System.Drawing.Point(234, 258);
@@ -504,7 +504,6 @@ namespace DeweyDecimalSystem
             // 
             // Book3
             // 
-            this.Book3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book3.BackgroundImage")));
             this.Book3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Book3.Controls.Add(this.lblbook3);
             this.Book3.Location = new System.Drawing.Point(199, 258);
@@ -523,54 +522,134 @@ namespace DeweyDecimalSystem
             this.lblbook3.TabIndex = 26;
             this.lblbook3.Text = "3";
             // 
-            // Book2
-            // 
-            this.Book2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book2.BackgroundImage")));
-            this.Book2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Book2.Controls.Add(this.lblbook2);
-            this.Book2.Location = new System.Drawing.Point(164, 258);
-            this.Book2.Name = "Book2";
-            this.Book2.Size = new System.Drawing.Size(29, 99);
-            this.Book2.TabIndex = 29;
-            this.Book2.TabStop = false;
-            // 
-            // lblbook2
-            // 
-            this.lblbook2.AutoSize = true;
-            this.lblbook2.BackColor = System.Drawing.Color.Transparent;
-            this.lblbook2.Location = new System.Drawing.Point(0, 43);
-            this.lblbook2.Name = "lblbook2";
-            this.lblbook2.Size = new System.Drawing.Size(13, 13);
-            this.lblbook2.TabIndex = 19;
-            this.lblbook2.Text = "2";
-            // 
             // book1
             // 
             this.book1.BackColor = System.Drawing.Color.Transparent;
             this.book1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("book1.BackgroundImage")));
             this.book1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.book1.Controls.Add(this.lblbook1);
             this.book1.Location = new System.Drawing.Point(129, 258);
             this.book1.Name = "book1";
             this.book1.Size = new System.Drawing.Size(29, 99);
             this.book1.TabIndex = 28;
             this.book1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(129, 83);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(32, 100);
+            this.panel1.TabIndex = 3;
+            this.panel1.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(129, 389);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel1.TabIndex = 34;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel2.TabIndex = 35;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel3.TabIndex = 35;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel5);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel4.TabIndex = 35;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel5.TabIndex = 35;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel6.TabIndex = 35;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Controls.Add(this.flowLayoutPanel8);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel7.TabIndex = 35;
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.Controls.Add(this.flowLayoutPanel9);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel8.TabIndex = 35;
+            // 
+            // flowLayoutPanel9
+            // 
+            this.flowLayoutPanel9.Controls.Add(this.flowLayoutPanel10);
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel9.TabIndex = 35;
+            // 
+            // flowLayoutPanel10
+            // 
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(29, 98);
+            this.flowLayoutPanel10.TabIndex = 35;
+            // 
             // lblbook1
             // 
             this.lblbook1.AutoSize = true;
-            this.lblbook1.Location = new System.Drawing.Point(-3, 43);
+            this.lblbook1.BackColor = System.Drawing.Color.White;
+            this.lblbook1.Location = new System.Drawing.Point(14, 44);
             this.lblbook1.Name = "lblbook1";
             this.lblbook1.Size = new System.Drawing.Size(13, 13);
             this.lblbook1.TabIndex = 18;
             this.lblbook1.Text = "1";
             // 
+            // paneltest
+            // 
+            this.paneltest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.paneltest.Controls.Add(this.lblbook1);
+            this.paneltest.Location = new System.Drawing.Point(70, 257);
+            this.paneltest.Name = "paneltest";
+            this.paneltest.Size = new System.Drawing.Size(53, 100);
+            this.paneltest.TabIndex = 33;
+            // 
             // ReplaceBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 440);
-            this.Controls.Add(this.testpanel);
+            this.ClientSize = new System.Drawing.Size(739, 520);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.paneltest);
+            this.Controls.Add(this.Book2);
             this.Controls.Add(this.Book7);
             this.Controls.Add(this.Book10);
             this.Controls.Add(this.Book9);
@@ -579,7 +658,6 @@ namespace DeweyDecimalSystem
             this.Controls.Add(this.Book5);
             this.Controls.Add(this.Book4);
             this.Controls.Add(this.Book3);
-            this.Controls.Add(this.Book2);
             this.Controls.Add(this.book1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.panel10);
@@ -593,16 +671,16 @@ namespace DeweyDecimalSystem
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ReplaceBooks";
             this.Text = "ReplaceBooks";
+            this.Load += new System.EventHandler(this.ReplaceBooks_Load);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ReplaceBooks_MouseUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -623,8 +701,8 @@ namespace DeweyDecimalSystem
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.testpanel.ResumeLayout(false);
-            this.testpanel.PerformLayout();
+            this.Book2.ResumeLayout(false);
+            this.Book2.PerformLayout();
             this.Book7.ResumeLayout(false);
             this.Book7.PerformLayout();
             this.Book10.ResumeLayout(false);
@@ -641,10 +719,19 @@ namespace DeweyDecimalSystem
             this.Book4.PerformLayout();
             this.Book3.ResumeLayout(false);
             this.Book3.PerformLayout();
-            this.Book2.ResumeLayout(false);
-            this.Book2.PerformLayout();
-            this.book1.ResumeLayout(false);
-            this.book1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.flowLayoutPanel8.ResumeLayout(false);
+            this.flowLayoutPanel9.ResumeLayout(false);
+            this.paneltest.ResumeLayout(false);
+            this.paneltest.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -654,7 +741,6 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStrip;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
@@ -675,7 +761,6 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblbook1;
         private System.Windows.Forms.Label lblbook2;
         private System.Windows.Forms.Label lblbook10;
         private System.Windows.Forms.Label lblbook9;
@@ -696,7 +781,18 @@ namespace DeweyDecimalSystem
         private Replace_Books.CustomGroupBox Book9;
         private Replace_Books.CustomGroupBox Book10;
         private Replace_Books.CustomGroupBox Book7;
-        private System.Windows.Forms.Panel testpanel;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
+        private System.Windows.Forms.Label lblbook1;
+        private System.Windows.Forms.Panel paneltest;
     }
 }

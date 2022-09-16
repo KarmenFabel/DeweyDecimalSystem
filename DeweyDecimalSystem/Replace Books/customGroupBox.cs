@@ -20,6 +20,7 @@ namespace DeweyDecimalSystem.Replace_Books
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
+             
             point = e.Location;
             base.OnMouseDown(e);
         }
