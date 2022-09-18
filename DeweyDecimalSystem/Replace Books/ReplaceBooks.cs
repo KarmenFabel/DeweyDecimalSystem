@@ -17,27 +17,59 @@ namespace DeweyDecimalSystem
            
             InitializeComponent();
             LabelsToList();
-           
+            timer1.Start();
+
 
         }
-        List<int> Dewey = RandomNumbers();
+        List <int> Dewey = RandomNumbers();
+        
+
+
 
         private static Random rnd = new Random();
+        
+
         public static List<int> RandomNumbers()
         {
 
             string newLine = Environment.NewLine;
             int nums = rnd.Next(100, 1000);
-            List<int> Dewey = new List<int>();
+            List<int> dewey = new List<int>();
 
             for (int i = 1; i <= 10; i++)
             {
                 nums = rnd.Next(100, 1000);
 
-                Dewey.Add(nums);
+                dewey.Add(nums);
             }
-            for (int i = 0; i < Dewey.Count; i++) ;
-            return Dewey;
+            for (int i = 0; i < dewey.Count; i++) ;
+            return dewey;
+
+
+        }
+        public static List<int> Sorted( List<int>sorted)
+        {
+            int j;
+            int minIndex;
+            for(int i =0; i< sorted.Count-1; i++)
+            {
+                minIndex = i;
+                for(j=i+1; j<sorted.Count; j++)
+                {
+                    if(sorted[j]<sorted[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                if(minIndex !=i)
+                {
+                    int temp = sorted[minIndex];
+                    sorted[minIndex] = sorted[i];
+                    sorted[i] = temp;
+                }
+                
+            }
+            return sorted;
 
 
         }
@@ -131,50 +163,264 @@ namespace DeweyDecimalSystem
 
         }
 
+        List<int> sortedDewey = new List<int>();
+
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (flPanel1.Controls.Count >= 1)
-            {
-                // flPanel1.Controls.Add(this.Book1);
-               // MessageBox.Show(Selection_Sort(Dewey));
-
-
-            }
-
         }
-        public static void Selection_Sort(List<int> dew)
+
+        public  void Progress()
         {
-            //Min position to keep track of position from lowest value
-            int min_position;
-            //temp to conduct swap during selection sort
-            int temp;
-
-            for (int i = 0; i < dew.Count; i++)
+            while (progressBar1.Value < 10)
             {
-                //initialize min position to index of array
-                min_position = i;
-                //from min positon check if next element is smaller
-                for (int x = i + 1; x < dew.Count; x++)
-                {
-                    //if smaller then make new min position
-                    if (dew[x] < dew[min_position])
-                    {
-                        //min position keeps track of the index that min is in 
-                        min_position = x;
 
-                    }
-                }//end of inner loop
-                //if min does not equal current element in loop then swap initialted
-                if (min_position != i)
+                var newDew = Sorted(Dewey);
+                foreach (var item in newDew)
                 {
-                    temp = dew[i];
-                    dew[i] = dew[min_position];
-                    dew[min_position] = temp;
+                    sortedDewey.Add(item);
 
                 }
-               // Console.Write(" " + ss_arr[i]);
+
+
+                foreach (var item in flPanel1.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[0].ToString())
+                                {
+                                    progressBar1.Value = 1;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel2.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[1].ToString())
+                                {
+                                    progressBar1.Value = 2;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel3.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[2].ToString())
+                                {
+                                    progressBar1.Value = 3;
+                                    // MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel4.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[3].ToString())
+                                {
+                                    progressBar1.Value = 4;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel5.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[4].ToString())
+                                {
+                                    progressBar1.Value = 5;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel6.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[5].ToString())
+                                {
+                                    progressBar1.Value = 6;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel7.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[6].ToString())
+                                {
+                                    progressBar1.Value = 7;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel8.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[7].ToString())
+                                {
+                                    progressBar1.Value = 8;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel9.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[8].ToString())
+                                {
+                                    progressBar1.Value = 9;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (var item in flPanel10.Controls)
+                {
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel book = (FlowLayoutPanel)item;
+                        foreach (var thing in book.Controls)
+                        {
+                            if (thing is Label)
+                            {
+                                Label label = (Label)thing;
+
+
+                                if (label.Text == sortedDewey[9].ToString())
+                                {
+                                    progressBar1.Value = 10;
+                                    //MessageBox.Show("Correct!!");
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Progress();
+            
         }
     }
 }
