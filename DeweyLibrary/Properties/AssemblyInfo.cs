@@ -2,15 +2,14 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DeweyDecimalSystem")]
+[assembly: AssemblyTitle("DeweyLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DeweyDecimalSystem")]
+[assembly: AssemblyProduct("DeweyLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("21e67de6-551a-4282-aded-0904d2023a3c")]
+[assembly: Guid("53db15ad-f43d-4286-9369-68131c3e9f95")]
 
 // Version information for an assembly consists of the following four values:
 //

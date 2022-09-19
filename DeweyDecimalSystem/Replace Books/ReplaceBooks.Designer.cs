@@ -46,7 +46,6 @@ namespace DeweyDecimalSystem
             this.flPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.flPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.flPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.book2 = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl2 = new System.Windows.Forms.Label();
@@ -66,14 +65,14 @@ namespace DeweyDecimalSystem
             this.lbl9 = new System.Windows.Forms.Label();
             this.book10 = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.newProgressBar1 = new DeweyDecimalSystem.Replace_Books.NewProgressBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.newProgressBar1 = new DeweyDecimalSystem.Replace_Books.NewProgressBar();
             this.Book1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.book2.SuspendLayout();
             this.book3.SuspendLayout();
@@ -84,6 +83,7 @@ namespace DeweyDecimalSystem
             this.book8.SuspendLayout();
             this.book9.SuspendLayout();
             this.book10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // Book1
@@ -98,7 +98,6 @@ namespace DeweyDecimalSystem
             this.Book1.Size = new System.Drawing.Size(39, 92);
             this.Book1.TabIndex = 1;
             this.Book1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Book1_MouseDown);
-            this.Book1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Book1_MouseUp);
             // 
             // lbl1
             // 
@@ -260,14 +259,6 @@ namespace DeweyDecimalSystem
             this.flPanel6.TabIndex = 4;
             this.flPanel6.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel6_DragDrop);
             this.flPanel6.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -503,28 +494,10 @@ namespace DeweyDecimalSystem
             this.lbl10.Text = "10";
             this.lbl10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(601, 205);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Placeholder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
-            // 
-            // newProgressBar1
-            // 
-            this.newProgressBar1.Location = new System.Drawing.Point(159, 34);
-            this.newProgressBar1.Maximum = 10;
-            this.newProgressBar1.Name = "newProgressBar1";
-            this.newProgressBar1.Size = new System.Drawing.Size(408, 23);
-            this.newProgressBar1.TabIndex = 10;
-            this.newProgressBar1.Click += new System.EventHandler(this.newProgressBar1_Click);
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // flowLayoutPanel1
             // 
@@ -536,6 +509,36 @@ namespace DeweyDecimalSystem
             this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
             this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(11, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 36);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Start Here with\r\n your Dewey Sort";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(34, 115);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 14;
+            this.pictureBox4.TabStop = false;
+            // 
+            // newProgressBar1
+            // 
+            this.newProgressBar1.Location = new System.Drawing.Point(155, 34);
+            this.newProgressBar1.Maximum = 10;
+            this.newProgressBar1.Name = "newProgressBar1";
+            this.newProgressBar1.Size = new System.Drawing.Size(412, 23);
+            this.newProgressBar1.TabIndex = 12;
+            // 
             // ReplaceBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,9 +546,10 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(723, 508);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.newProgressBar1);
             this.Controls.Add(this.Book1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.book9);
             this.Controls.Add(this.book10);
@@ -556,7 +560,6 @@ namespace DeweyDecimalSystem
             this.Controls.Add(this.book4);
             this.Controls.Add(this.book8);
             this.Controls.Add(this.book2);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.flPanel6);
             this.Controls.Add(this.flPanel1);
             this.Controls.Add(this.flPanel7);
@@ -578,7 +581,6 @@ namespace DeweyDecimalSystem
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.book2.ResumeLayout(false);
             this.book2.PerformLayout();
@@ -598,6 +600,7 @@ namespace DeweyDecimalSystem
             this.book9.PerformLayout();
             this.book10.ResumeLayout(false);
             this.book10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,7 +622,6 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.FlowLayoutPanel flPanel8;
         private System.Windows.Forms.FlowLayoutPanel flPanel7;
         private System.Windows.Forms.FlowLayoutPanel flPanel6;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.FlowLayoutPanel book2;
         private System.Windows.Forms.Label lbl2;
@@ -639,9 +641,10 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Label lbl9;
         private System.Windows.Forms.FlowLayoutPanel book10;
         private System.Windows.Forms.Label lbl10;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
-        private Replace_Books.NewProgressBar newProgressBar1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Replace_Books.NewProgressBar newProgressBar1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
