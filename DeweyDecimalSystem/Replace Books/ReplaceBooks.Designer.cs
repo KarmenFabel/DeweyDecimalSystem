@@ -109,7 +109,6 @@ namespace DeweyDecimalSystem
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "1";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             // 
             // menuStrip1
             // 
@@ -149,7 +148,7 @@ namespace DeweyDecimalSystem
             this.flPanel5.Name = "flPanel5";
             this.flPanel5.Size = new System.Drawing.Size(62, 111);
             this.flPanel5.TabIndex = 3;
-            this.flPanel5.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel5.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel5_DragDrop);
             this.flPanel5.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel4
@@ -161,7 +160,7 @@ namespace DeweyDecimalSystem
             this.flPanel4.Name = "flPanel4";
             this.flPanel4.Size = new System.Drawing.Size(62, 111);
             this.flPanel4.TabIndex = 4;
-            this.flPanel4.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel4.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel4_DragDrop);
             this.flPanel4.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel3
@@ -173,7 +172,7 @@ namespace DeweyDecimalSystem
             this.flPanel3.Name = "flPanel3";
             this.flPanel3.Size = new System.Drawing.Size(62, 111);
             this.flPanel3.TabIndex = 4;
-            this.flPanel3.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel3.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel3_DragDrop);
             this.flPanel3.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel2
@@ -185,7 +184,7 @@ namespace DeweyDecimalSystem
             this.flPanel2.Name = "flPanel2";
             this.flPanel2.Size = new System.Drawing.Size(62, 111);
             this.flPanel2.TabIndex = 4;
-            this.flPanel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel2_DragDrop);
             this.flPanel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel1
@@ -209,7 +208,7 @@ namespace DeweyDecimalSystem
             this.flPanel10.Name = "flPanel10";
             this.flPanel10.Size = new System.Drawing.Size(62, 111);
             this.flPanel10.TabIndex = 3;
-            this.flPanel10.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel10.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel10_DragDrop);
             this.flPanel10.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel9
@@ -221,7 +220,7 @@ namespace DeweyDecimalSystem
             this.flPanel9.Name = "flPanel9";
             this.flPanel9.Size = new System.Drawing.Size(62, 111);
             this.flPanel9.TabIndex = 4;
-            this.flPanel9.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel9.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel9_DragDrop);
             this.flPanel9.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel8
@@ -233,7 +232,7 @@ namespace DeweyDecimalSystem
             this.flPanel8.Name = "flPanel8";
             this.flPanel8.Size = new System.Drawing.Size(62, 111);
             this.flPanel8.TabIndex = 4;
-            this.flPanel8.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel8.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel8_DragDrop);
             this.flPanel8.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel7
@@ -245,7 +244,7 @@ namespace DeweyDecimalSystem
             this.flPanel7.Name = "flPanel7";
             this.flPanel7.Size = new System.Drawing.Size(62, 111);
             this.flPanel7.TabIndex = 4;
-            this.flPanel7.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel7.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel7_DragDrop);
             this.flPanel7.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // flPanel6
@@ -257,7 +256,7 @@ namespace DeweyDecimalSystem
             this.flPanel6.Name = "flPanel6";
             this.flPanel6.Size = new System.Drawing.Size(62, 111);
             this.flPanel6.TabIndex = 4;
-            this.flPanel6.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
+            this.flPanel6.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel6_DragDrop);
             this.flPanel6.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
             // pictureBox2
@@ -523,7 +522,6 @@ namespace DeweyDecimalSystem
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ReplaceBooks
             // 
