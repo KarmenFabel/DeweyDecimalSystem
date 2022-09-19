@@ -67,8 +67,9 @@ namespace DeweyDecimalSystem
             this.book10 = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.newProgressBar1 = new DeweyDecimalSystem.Replace_Books.NewProgressBar();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Book1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -97,6 +98,7 @@ namespace DeweyDecimalSystem
             this.Book1.Size = new System.Drawing.Size(39, 92);
             this.Book1.TabIndex = 1;
             this.Book1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Book1_MouseDown);
+            this.Book1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Book1_MouseUp);
             // 
             // lbl1
             // 
@@ -511,17 +513,28 @@ namespace DeweyDecimalSystem
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(155, 34);
-            this.progressBar1.Maximum = 10;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(412, 23);
-            this.progressBar1.TabIndex = 10;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
+            // 
+            // newProgressBar1
+            // 
+            this.newProgressBar1.Location = new System.Drawing.Point(159, 34);
+            this.newProgressBar1.Maximum = 10;
+            this.newProgressBar1.Name = "newProgressBar1";
+            this.newProgressBar1.Size = new System.Drawing.Size(408, 23);
+            this.newProgressBar1.TabIndex = 10;
+            this.newProgressBar1.Click += new System.EventHandler(this.newProgressBar1_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(122, 343);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(481, 115);
+            this.flowLayoutPanel1.TabIndex = 11;
+            this.flowLayoutPanel1.Visible = false;
+            this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
+            this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
             // 
             // ReplaceBooks
             // 
@@ -530,7 +543,7 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(723, 508);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.newProgressBar1);
             this.Controls.Add(this.Book1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox3);
@@ -556,6 +569,7 @@ namespace DeweyDecimalSystem
             this.Controls.Add(this.flPanel5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ReplaceBooks";
             this.Text = "Form1";
@@ -626,7 +640,8 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.FlowLayoutPanel book10;
         private System.Windows.Forms.Label lbl10;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
+        private Replace_Books.NewProgressBar newProgressBar1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

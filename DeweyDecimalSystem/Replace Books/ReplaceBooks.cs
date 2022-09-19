@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeweyDecimalSystem.Replace_Books;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DeweyDecimalSystem
 {
@@ -133,7 +135,8 @@ namespace DeweyDecimalSystem
                             Label label = (Label)thing;
                             if (label.Text == sort[i].ToString())
                             {
-                                progressBar1.Increment(1);
+                                newProgressBar1.Increment(1);
+                              
                             }
                         }
                     }
@@ -530,6 +533,51 @@ namespace DeweyDecimalSystem
                 ((FlowLayoutPanel)sender).Controls.Add(control);
             }
             sortedList(flPanel10, 9);
+        }
+
+        
+
+        private void newProgressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(typeof(string)))
+                return;
+
+            var name = e.Data.GetData(typeof(string)) as string;
+            var control = this.Controls.Find(name, true).FirstOrDefault();
+            if (control != null)
+            {
+                control.Parent.Controls.Remove(control);
+                var panel = sender as FlowLayoutPanel;
+                ((FlowLayoutPanel)sender).Controls.Add(control);
+            }
+
+        }
+
+        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(typeof(string)))
+                return;
+
+            var name = e.Data.GetData(typeof(string)) as string;
+            var control = this.Controls.Find(name, true).FirstOrDefault();
+            if (control != null)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+       
+
+        private void Book1_MouseUp(object sender, MouseEventArgs e)
+        {
+            var control = sender as Control;
+            this.DoDragDrop(control.Name, DragDropEffects.Move);
+
         }
     }
 }
