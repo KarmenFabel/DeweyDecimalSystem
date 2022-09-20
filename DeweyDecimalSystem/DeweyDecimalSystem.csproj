@@ -116,7 +116,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomGenerate.cs" />
+    <Compile Include="Replace Books\ReplaceB.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Replace Books\ReplaceBooks.resx">
       <DependentUpon>ReplaceBooks.cs</DependentUpon>
     </EmbeddedResource>

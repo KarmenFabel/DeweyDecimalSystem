@@ -10,11 +10,33 @@ namespace DeweyLibrary
 
     public class Library
     {
+        public static int ticks;
         public static Random rnd = new Random();
+
+        public static decimal GetRandom(decimal min, decimal max)
+        {
+            return ((decimal)rnd.Next((int)(min * 100.00M), (int)(max * 100.00M))) / 100.00M;
+        }
+        public static List<decimal> RandomNumbers()
+        {
+            List<decimal> Dewey = new List<decimal>();
+            for (int i = 1; i <= 10; i++)
+            {
+
+
+                Dewey.Add(GetRandom(100, 1000));
+
+            }
+            for (int i = 0; i < Dewey.Count; i++) ;
+            return Dewey;
+
+        }
+        /*
         /// <summary>
         /// List method to create a random List
         /// </summary>
         /// <returns>dewey</returns>
+        /// 
         public static List<int> RandomNumbers()
         {
             List<int> dewey = new List<int>();
@@ -27,12 +49,13 @@ namespace DeweyLibrary
             for (int i = 0; i < dewey.Count; i++) ;
             return dewey;
         }
+        */
         /// <summary>
         /// Selection Sort method
         /// </summary>
         /// <param name="sorted"></param>
         /// <returns></returns>
-        public static List<int> Sorted(List<int> sorted)
+        public static List<decimal> Sorted(List<decimal> sorted)
         {
             int j;
             int minIndex;
@@ -48,15 +71,16 @@ namespace DeweyLibrary
                 }
                 if (minIndex != i)
                 {
-                    int temp = sorted[minIndex];
+                    decimal temp = sorted[minIndex];
                     sorted[minIndex] = sorted[i];
                     sorted[i] = temp;
                 }
             }
             return sorted;
         }
-       
 
+       public static int splitsec = 0;
+        public static int secs = 0;
+       public static int mins = 0;
     }
 }
-

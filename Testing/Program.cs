@@ -79,6 +79,4 @@ namespace Testing
         }
     }
     //
-    //RandomNumbers from:
-    //https://www.youtube.com/watch?v=gog3_xnf86M&ab_channel=Web%26GraphicDesign-Stock%26OptionsTrading
-
+   

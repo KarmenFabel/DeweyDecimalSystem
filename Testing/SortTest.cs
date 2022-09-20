@@ -6,24 +6,97 @@ using System.Threading.Tasks;
 
 namespace Testing
 {
+    /*
+     * Class Foo{
+   String f1;
+   Integer f2;
+}
+
+Foo[] array=new Foo[10];*/
     class SortTest
     {  
           private static Random rnd = new Random();
-        List<int> Dewey { get; set; }
+       
+        
+      
         public static void Main (String[] args)
         {
-            Console.WriteLine(RandomNumbers());
+            //Console.WriteLine(DoubleRandom());
            // int[] selection_sort_numbers = { 7, 45, 12, 22, 555, 1, 2, 999, 7 };
-            for(int i = 0; i < RandomNumbers().Count; i++)
+            for(int i = 0; i < NewL().Count; i++)
             {
-                Console.Write(" " + RandomNumbers()[i]);
+                Console.Write(" " + NewL()[i]);
             }
             
             Console.WriteLine(" ");
-            Console.WriteLine("Selecontion sort");
-            Selection_Sort(RandomNumbers());
+            
             Console.ReadLine();
             
+
+        }
+
+
+        // returns a random decimal value in the range [min, max)
+        // allowing for steps different outcomes.
+        public static decimal GetRandom(decimal min, decimal max)
+        {
+            return ((decimal)rnd.Next((int)(min * 100.00M), (int)(max * 100.00M))) / 100.00M;
+        }
+        public static List<decimal> NewL( )
+        {
+            List<decimal> DDewey = new List<decimal>();
+            for (int i = 1; i <= 10; i++)
+            {
+
+                
+                DDewey.Add(GetRandom(100, 1000));
+                
+            }
+            for (int i = 0; i < DDewey.Count; i++) ;
+            return DDewey;
+
+        }
+        public static List<double> DoubleRandom()
+        {
+            //private static Random rnd = new Random();
+            //var random = new Random();
+
+
+            List<double> DDewey = new List<double>();
+            // txtNumbers.Text = nums.ToString();
+            for (int i = 1; i <= 10; i++)
+            {
+                double nums = rnd.Next(100, 1000);
+
+                DDewey.Add(nums);
+            }
+            for (int i = 0; i < DDewey.Count; i++) ;
+            return DDewey;
+        }
+        public static List<int> NewList()
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < RandomNumbers().Count; i++)
+            {
+                List<int>one = RandomNumbers();
+                List<int>two = RandomNumbers2();
+                //list.Add(one);
+                
+
+            }
+
+
+            List<int> Dewey = new List<int>();
+            // txtNumbers.Text = nums.ToString();
+            for (int i = 1; i <= 10; i++)
+            {
+                int nums = rnd.Next(100, 1000);
+
+                Dewey.Add(nums);
+            }
+            for (int i = 0; i < Dewey.Count; i++) ;
+            return Dewey;
+
         }
         public static void Selection_Sort(List<int> ss_arr)
         {
@@ -58,23 +131,42 @@ namespace Testing
                 Console.Write(" " + ss_arr[i]);
             }
         }
+        
 
         public static List<int> RandomNumbers()
         {
 
             string newLine = Environment.NewLine;
-            int nums = rnd.Next(100, 1000);
+            //int nums = rnd.Next(100, 1000);
            List<int> Dewey = new List<int>();
             // txtNumbers.Text = nums.ToString();
             for (int i = 1; i <= 10; i++)
             {
-                nums = rnd.Next(100, 1000);
-                //txtNumbers.Text = txtNumbers.Text + newLine + nums.ToString();
+                int nums = rnd.Next(100, 1000);
+                
                 Dewey.Add(nums);
             }
             for (int i = 0; i < Dewey.Count; i++) ;
             return Dewey;
             
         }
+        public static List<int> RandomNumbers2()
+        {
+
+            string newLine = Environment.NewLine;
+            //int nums = rnd.Next(100, 1000);
+            List<int> Dewey = new List<int>();
+            // txtNumbers.Text = nums.ToString();
+            for (int i = 1; i <= 10; i++)
+            {
+                int nums = rnd.Next(100, 1000);
+
+                Dewey.Add(nums);
+            }
+            for (int i = 0; i < Dewey.Count; i++) ;
+            return Dewey;
+
+        }
+
     }
 }

@@ -70,6 +70,8 @@ namespace DeweyDecimalSystem
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.newProgressBar1 = new DeweyDecimalSystem.Replace_Books.NewProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.time = new System.Windows.Forms.Label();
             this.Book1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -533,11 +535,33 @@ namespace DeweyDecimalSystem
             // 
             // newProgressBar1
             // 
+            this.newProgressBar1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.newProgressBar1.Location = new System.Drawing.Point(155, 34);
             this.newProgressBar1.Maximum = 10;
             this.newProgressBar1.Name = "newProgressBar1";
             this.newProgressBar1.Size = new System.Drawing.Size(412, 23);
             this.newProgressBar1.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
+            this.label2.Location = new System.Drawing.Point(590, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 29);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Your time";
+            // 
+            // time
+            // 
+            this.time.AutoSize = true;
+            this.time.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.time.Location = new System.Drawing.Point(609, 214);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(0, 25);
+            this.time.TabIndex = 16;
             // 
             // ReplaceBooks
             // 
@@ -546,6 +570,8 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(723, 508);
+            this.Controls.Add(this.time);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newProgressBar1);
@@ -608,7 +634,6 @@ namespace DeweyDecimalSystem
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel Book1;
-        private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -624,27 +649,30 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.FlowLayoutPanel flPanel6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.FlowLayoutPanel book2;
-        private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.FlowLayoutPanel book3;
-        private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.FlowLayoutPanel book4;
-        private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.FlowLayoutPanel book5;
-        private System.Windows.Forms.Label lbl5;
         private System.Windows.Forms.FlowLayoutPanel book6;
-        private System.Windows.Forms.Label lbl6;
         private System.Windows.Forms.FlowLayoutPanel book7;
-        private System.Windows.Forms.Label lbl7;
         private System.Windows.Forms.FlowLayoutPanel book8;
-        private System.Windows.Forms.Label lbl8;
         private System.Windows.Forms.FlowLayoutPanel book9;
-        private System.Windows.Forms.Label lbl9;
         private System.Windows.Forms.FlowLayoutPanel book10;
-        private System.Windows.Forms.Label lbl10;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Replace_Books.NewProgressBar newProgressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
+        public Replace_Books.NewProgressBar newProgressBar1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label time;
+        public System.Windows.Forms.Label lbl1;
+        public System.Windows.Forms.Label lbl2;
+        public System.Windows.Forms.Label lbl3;
+        public System.Windows.Forms.Label lbl4;
+        public System.Windows.Forms.Label lbl5;
+        public System.Windows.Forms.Label lbl6;
+        public System.Windows.Forms.Label lbl7;
+        public System.Windows.Forms.Label lbl8;
+        public System.Windows.Forms.Label lbl9;
+        public System.Windows.Forms.Label lbl10;
     }
 }
