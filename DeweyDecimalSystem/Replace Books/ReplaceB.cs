@@ -23,15 +23,18 @@ namespace DeweyDecimalSystem
 
         public void LabelsToList()
         {
+            //adds the dewey list to array of labels
             var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
                 lbl7 , lbl8 , lbl9 , lbl10 };
             for (var i = 0; i != Dewey.Count; i++)
             {
+                //foreach label add a dewey list number
                 labels[i].Text = Dewey[i].ToString();
             }
         }
         private void MDragDrop(object sender, DragEventArgs e)
         {
+            //implements drag drop control
             if (!e.Data.GetDataPresent(typeof(string)))
                 return;
 
@@ -47,6 +50,7 @@ namespace DeweyDecimalSystem
         }
         private void MDragEnter(DragEventArgs e)
         {
+            //Implements drag enter control
             if (!e.Data.GetDataPresent(typeof(string)))
                 return;
 
@@ -68,23 +72,29 @@ namespace DeweyDecimalSystem
         /// <param name="i"></param>
         public void Progress(FlowLayoutPanel panel, List<decimal> sort, int i)
         {
+            //finding controls within the Bookcase
             foreach (var item in panel.Controls)
             {
                 if (item is FlowLayoutPanel)
                 {
+                    //confirms book is inside bookcase
                     FlowLayoutPanel book = (FlowLayoutPanel)item;
                     foreach (var thing in book.Controls)
                     {
                         if (thing is Label)
                         {
+                            // confirm Label is inside book
                             Label label = (Label)thing;
+                            //confirms if label is the same as the sorted dewey list
                             if (label.Text == sort[i].ToString())
                             {
+                                //with each correct answer add to progress Bar
                                 newProgressBar1.Increment(1);
 
                             }
                             if (label.Text != sort[i].ToString())
                             {
+                                //when user gets book wrong 
                                 MessageBox.Show("Incorrect, Double check the last book");
                             }
                         }
@@ -100,13 +110,15 @@ namespace DeweyDecimalSystem
         /// <param name="i"></param>
         public void sortedList(FlowLayoutPanel panel, int i)
         {
-
+            //sorted list
             List<decimal> sortedDewey = new List<decimal>();
             var newDew = Library.Sorted(Dewey);
+            //add each number of Dewey list to the sorted list
             foreach (var item in newDew)
             {
                 sortedDewey.Add(item);
             }
+            //add sorted list to progress method
             Progress(panel, sortedDewey, i);
 
         }
@@ -115,10 +127,13 @@ namespace DeweyDecimalSystem
         /// </summary>
         private void TimerMethod()
         {
+            //Add split seconds
             Library.splitsec++;
-
+            //Add seconds 
             Library.secs = (int)Math.Floor((decimal)Library.splitsec / 10);
+            //add minutes
             Library.mins = (int)Math.Floor((decimal)Library.secs / 60);
+            //add all timers to label 
             time.Text = Library.mins.ToString() + ":" + Library.secs.ToString() + ":" + (Library.splitsec % 60).ToString();
         }
         /// <summary>
@@ -127,6 +142,7 @@ namespace DeweyDecimalSystem
         private void TimerTickMethod()
         {
             TimerMethod();
+            //When Progress Bar is done stop timer and let user know their time
             if (newProgressBar1.Value == 10)
             {
                 timer1.Stop();

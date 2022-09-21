@@ -10,16 +10,19 @@ namespace DeweyLibrary
 
     public class Library
     {
-        public static int ticks;
+
+       //Global random called
         public static Random rnd = new Random();
 
         public static decimal GetRandom(decimal min, decimal max)
-        {
+        {//converts random number into a decimal
             return ((decimal)rnd.Next((int)(min * 100.00M), (int)(max * 100.00M))) / 100.00M;
         }
         public static List<decimal> RandomNumbers()
         {
+            // adds a decimal number to the method that creates the Dewey List
             List<decimal> Dewey = new List<decimal>();
+            //For loop loops 10 times to create 10 numbers
             for (int i = 1; i <= 10; i++)
             {
 
@@ -31,25 +34,7 @@ namespace DeweyLibrary
             return Dewey;
 
         }
-        /*
-        /// <summary>
-        /// List method to create a random List
-        /// </summary>
-        /// <returns>dewey</returns>
-        /// 
-        public static List<int> RandomNumbers()
-        {
-            List<int> dewey = new List<int>();
-
-            for (int i = 1; i <= 10; i++)
-            {
-                int nums = rnd.Next(100, 1000);
-                dewey.Add(nums);
-            }
-            for (int i = 0; i < dewey.Count; i++) ;
-            return dewey;
-        }
-        */
+       
         /// <summary>
         /// Selection Sort method
         /// </summary>
@@ -80,7 +65,7 @@ namespace DeweyLibrary
         }
 
        public static int splitsec = 0;
-        public static int secs = 0;
+       public static int secs = 0;
        public static int mins = 0;
     }
 }
