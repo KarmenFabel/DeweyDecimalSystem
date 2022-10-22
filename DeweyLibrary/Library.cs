@@ -68,4 +68,9 @@ namespace DeweyLibrary
        public static int secs = 0;
        public static int mins = 0;
     }
+    public class DeweyDecimalGroup
+    {
+        public int deweyKey { get; set; }
+        public string deweyDescrip { get; set; }
+    }
 }

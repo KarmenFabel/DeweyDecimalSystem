@@ -88,6 +88,7 @@ namespace DeweyDecimalSystem
             this.picBoxIdAreas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBoxIdAreas.TabIndex = 3;
             this.picBoxIdAreas.TabStop = false;
+            this.picBoxIdAreas.Click += new System.EventHandler(this.picBoxIdAreas_Click);
             // 
             // picBoxFindCallNum
             // 

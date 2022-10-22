@@ -77,6 +77,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Identifying Areas\IdentifyingAreas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Identifying Areas\IdentifyingAreas.Designer.cs">
+      <DependentUpon>IdentifyingAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Identifying Areas\IdentifyingAreasClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Replace Books\NewProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -97,6 +106,9 @@
     <Compile Include="Replace Books\ReplaceB.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Identifying Areas\IdentifyingAreas.resx">
+      <DependentUpon>IdentifyingAreas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Replace Books\ReplaceBooks.resx">
       <DependentUpon>ReplaceBooks.cs</DependentUpon>
     </EmbeddedResource>

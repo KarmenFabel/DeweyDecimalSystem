@@ -23,6 +23,13 @@ namespace DeweyDecimalSystem
             RB.ShowDialog();
            
         }
+
+        private void picBoxIdAreas_Click(object sender, EventArgs e)
+        {
+            IdentifyingAreas IA = new IdentifyingAreas();
+            this.Hide();
+            IA.ShowDialog();
+        }
     }
 }
 /*
