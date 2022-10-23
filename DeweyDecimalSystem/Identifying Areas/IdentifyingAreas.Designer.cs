@@ -60,6 +60,8 @@ namespace DeweyDecimalSystem
             this.lblquestion = new System.Windows.Forms.Label();
             this.lblAnswer = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.answer1.SuspendLayout();
             this.answer4.SuspendLayout();
             this.answer3.SuspendLayout();
@@ -78,7 +80,7 @@ namespace DeweyDecimalSystem
             // 
             // btnSwitch
             // 
-            this.btnSwitch.Location = new System.Drawing.Point(38, 124);
+            this.btnSwitch.Location = new System.Drawing.Point(598, 70);
             this.btnSwitch.Name = "btnSwitch";
             this.btnSwitch.Size = new System.Drawing.Size(75, 23);
             this.btnSwitch.TabIndex = 6;
@@ -405,8 +407,9 @@ namespace DeweyDecimalSystem
             // lblquestion
             // 
             this.lblquestion.AutoSize = true;
+            this.lblquestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
             this.lblquestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblquestion.Location = new System.Drawing.Point(358, 41);
+            this.lblquestion.Location = new System.Drawing.Point(207, 24);
             this.lblquestion.Name = "lblquestion";
             this.lblquestion.Size = new System.Drawing.Size(66, 24);
             this.lblquestion.TabIndex = 41;
@@ -415,8 +418,9 @@ namespace DeweyDecimalSystem
             // lblAnswer
             // 
             this.lblAnswer.AutoSize = true;
+            this.lblAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
             this.lblAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnswer.Location = new System.Drawing.Point(358, 332);
+            this.lblAnswer.Location = new System.Drawing.Point(133, 314);
             this.lblAnswer.Name = "lblAnswer";
             this.lblAnswer.Size = new System.Drawing.Size(60, 24);
             this.lblAnswer.TabIndex = 42;
@@ -424,13 +428,35 @@ namespace DeweyDecimalSystem
             // 
             // btnDone
             // 
-            this.btnDone.Location = new System.Drawing.Point(38, 173);
+            this.btnDone.Location = new System.Drawing.Point(598, 119);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(75, 23);
             this.btnDone.TabIndex = 43;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 35);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(184, 260);
+            this.richTextBox1.TabIndex = 44;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(598, 171);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "Continue";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // IdentifyingAreas
             // 
@@ -439,6 +465,8 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(829, 499);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.lblquestion);
@@ -514,5 +542,7 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Label lblquestion4;
         private System.Windows.Forms.Label lblquestion2;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -597,6 +597,15 @@
         lSUAsG1lCQBsW1kCAFv29rP+PzX4VtvVdE/sAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Match the bottom blocks with the correct answer in the top four blocks.
+
+If you would like to switch the questions (matching call numbers to descriptions or descriptions to call numbers)
+click on the switch button 
+
+Click done to see your score and finish the game
+Click new to continue to get more questions</value>
+  </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAgEAkACQAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
