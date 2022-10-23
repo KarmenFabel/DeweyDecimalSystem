@@ -9,61 +9,64 @@ namespace DeweyDecimalSystem
 {
     public partial class IdentifyingAreas
     {
-
+        //HashSet so that the random numbers are not repeating
+        public static HashSet<int> randoms = new HashSet<int>();
         Dictionary<int, DeweyDecimalGroup> deweyDictionary = deweyGroups();
-
+        //Creation of Dictionary
         public static  Dictionary<int, DeweyDecimalGroup> deweyGroups()
         {
+            //Each part of dictionary contains both the dewey numbers with their Description
             DeweyDecimalGroup dewey1 = new DeweyDecimalGroup()
             {
-                deweyKey = 001,//between 001 - 099;
+                deweyKey = " 001 - 099",
                 deweyDescrip = "Generalities"
             };
             DeweyDecimalGroup dewey2 = new DeweyDecimalGroup()
             {
-                deweyKey = 100,//between 100 - 199;
+                deweyKey = "100 - 199",
                 deweyDescrip = "Philosophy"
             };
             DeweyDecimalGroup dewey3 = new DeweyDecimalGroup()
             {
-                deweyKey = 200,//between 200-299 - 099;
+                deweyKey = "200-299",
                 deweyDescrip = "Religion"
-            }; 
+            };
             DeweyDecimalGroup dewey4 = new DeweyDecimalGroup()
             {
-                deweyKey = 300,//between 300 - 399;
+                deweyKey = "300 - 399",
                 deweyDescrip = "Social Science"
             };
             DeweyDecimalGroup dewey5 = new DeweyDecimalGroup()
             {
-                deweyKey = 400,//between 400 - 499;
+                deweyKey = "400 - 499",
                 deweyDescrip = "Languages"
             };
             DeweyDecimalGroup dewey6 = new DeweyDecimalGroup()
             {
-                deweyKey = 500,//between 500 - 599;
+                deweyKey = "500 - 599",
                 deweyDescrip = "Natural Science"
             };
             DeweyDecimalGroup dewey7 = new DeweyDecimalGroup()
             {
-                deweyKey =600,//between 600 - 699;
+                deweyKey ="600 - 699",
                 deweyDescrip = "Applied Science"
             };
             DeweyDecimalGroup dewey8 = new DeweyDecimalGroup()
             {
-                deweyKey = 700,//between 700 - 799;
+                deweyKey = "700 - 799",
                 deweyDescrip = "Arts and Recreation"
             };
             DeweyDecimalGroup dewey9 = new DeweyDecimalGroup()
             {
-                deweyKey = 800,//between 800 - 899;
+                deweyKey = "800 - 899",
                 deweyDescrip = "Literature"
             };
             DeweyDecimalGroup dewey10 = new DeweyDecimalGroup()
             {
-                deweyKey = 900,//between 900 - 999;
+                deweyKey = " 900 - 999",
                 deweyDescrip = "Geography and History"
             };
+            //Adding a key to the deweGrouping
             Dictionary<int, DeweyDecimalGroup> dewDict = new Dictionary<int, DeweyDecimalGroup>();
             dewDict.Add(0, dewey1);
             dewDict.Add(1, dewey2);
@@ -78,11 +81,27 @@ namespace DeweyDecimalSystem
             //dewDict.Add(dewey10.deweyKey, dewey10);
             return dewDict;
         }
+
         List<string> fourRandomDescriptions = new List<string>();
+        public static List<T> Randomize<T>(List<T> list)
+        {
+            List<T> randomizedList = new List<T>();
+            Random rnd = new Random();
+            while (list.Count > 0)
+            {
+                int index = rnd.Next(0, list.Count); //pick a random item from the master list
+                randomizedList.Add(list[index]); //place it at the end of the randomized list
+                list.RemoveAt(index);
+            }
+            return randomizedList;
+        }
+       
         public void DescFirst()
         {
-            List<int> randoms = Enumerable.Range(0, 9).ToList();
-            List<int> sevenRandoms = new List<int>();
+            //List<int> randoms = Enumerable.Range(0, 9).ToList();
+            List<string> sevenRandoms = new List<string>();
+        
+        var seven = sevenRandoms.OrderBy(a => Guid.NewGuid()).ToList();
 
             lblquestion.Text = Library.Description;
             lblAnswer.Text = Library.CallNumber;
@@ -91,48 +110,34 @@ namespace DeweyDecimalSystem
             var questions = new[] { question1, lblquestion2, lblquestion3, lblquestion4 };
 
             Random random = new Random();
-            for (int i = 0; i < 7; ++i)
+            while (randoms.Count < 7)
             {
-                int index = random.Next(0, randoms.Count);
-                //make first number 001 
-                if (index == 0)
-                {
-                     string convert = "001";
-                    sevenRandoms.Add(Int32.Parse(convert));
-                    //sevenRandoms.Add(index);
-                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
-                    fourRandomDescriptions.Add(pair.Value.deweyDescrip);
-                }
-                else
-                {
-                    string convert = randoms[index].ToString() + "00";
-                    sevenRandoms.Add(Int32.Parse(convert));
-                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
-                    fourRandomDescriptions.Add(pair.Value.deweyDescrip);
-                }
-                randoms.RemoveAt(index);
-                // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
-
+                randoms.Add(random.Next(0, 9));
             }
-            for (var i = 0; i != sevenRandoms.Count; i++)
+            foreach (var item in randoms)
             {
+                KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(item);
+                sevenRandoms.Add(pair.Value.deweyKey);
+                fourRandomDescriptions.Add(pair.Value.deweyDescrip);
+            }
+
+            List<string> sevenRandoms2 = Randomize(sevenRandoms);
+            for (var i = 0; i != sevenRandoms2.Count; i++)
+            {
+               
                 //foreach label add a dewey list number
-                labels[i].Text = sevenRandoms[i].ToString();
+                labels[i].Text = sevenRandoms2[i].ToString();
             }
             for (var i = 0; i != 4; i++)
             {
                 questions[i].Text = fourRandomDescriptions[i];
             }
-
-
-
         }
-        List<int> fourRandomCallNumbers = new List<int>();
-        public void CalNumsFirst()
+       
+            public void CalNumsFirst()
         {
-            List<int> randoms = Enumerable.Range(0, 9).ToList();
+            List<string> fourRandomCallNumbers = new List<string>();
             List<string> sevenRandoms = new List<string>();
-
             lblquestion.Text = Library.CallNumber;
             lblAnswer.Text = Library.Description;
             var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
@@ -141,31 +146,20 @@ namespace DeweyDecimalSystem
             var questions = new[] { question1, lblquestion2, lblquestion3, lblquestion4 };
 
             Random random = new Random();
-            for (int i = 0; i < 7; ++i)
-            {
-                int index = random.Next(0, randoms.Count);
-                //make first number 001 
-                if (index == 0)
+            
+                while (randoms.Count < 7)
                 {
-                    // string convert = "001";
-                    //sevenRandoms.Add(Int32.Parse(convert));
-                    KeyValuePair<int, DeweyDecimalGroup> pair
-                        = deweyDictionary.ElementAt(index);
-                    sevenRandoms.Add(pair.Value.deweyDescrip);
-                    fourRandomCallNumbers.Add(index);
+                    randoms.Add(random.Next(0, 9));
                 }
-                else
-                {
-                    string convert = randoms[index].ToString() + "00";
-                    fourRandomCallNumbers.Add(Int32.Parse(convert));
-                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
-                    sevenRandoms.Add(pair.Value.deweyDescrip);
-
-                }
-                randoms.RemoveAt(index);
+                foreach(var item in randoms)
+                 {
+                KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(item);
+                fourRandomCallNumbers.Add(pair.Value.deweyKey);
+                sevenRandoms.Add(pair.Value.deweyDescrip);
+                //randoms.RemoveAt(index);
                 // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
 
-            }
+                 }
             for (var i = 0; i != sevenRandoms.Count; i++)
             {
                 //foreach label add a dewey list number

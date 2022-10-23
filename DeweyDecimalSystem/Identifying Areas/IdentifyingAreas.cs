@@ -61,23 +61,22 @@ namespace DeweyDecimalSystem
 
         private void flPanel1_DragDrop(object sender, DragEventArgs e)
         {
+           //((FlowLayoutPanel)e.Data.GetData(typeof(FlowLayoutPanel))).Parent = (FlowLayoutPanel)sender;
             //implements drag drop control
             if (!e.Data.GetDataPresent(typeof(string)))
                 return;
 
             var name = e.Data.GetData(typeof(string)) as string;
-            var control = this.Controls.Find(name, true).FirstOrDefault();
-            if (control != null)
-            {
+            var control = Controls.Find(name, true).FirstOrDefault();
                 control.Parent.Controls.Remove(control);
-                var panel = sender as FlowLayoutPanel;
                 ((FlowLayoutPanel)sender).Controls.Add(control);
-            }
+          
         }
 
         private void flPanel1_DragEnter(object sender, DragEventArgs e)
         {
-            //Implements drag enter control
+            e.Effect = DragDropEffects.Move;
+            /*//Implements drag enter control
             if (!e.Data.GetDataPresent(typeof(string)))
                 return;
 
@@ -86,7 +85,7 @@ namespace DeweyDecimalSystem
             if (control != null)
             {
                 e.Effect = DragDropEffects.Move;
-            }
+            }*/
         }
 
         private void answer1_MouseDown(object sender, MouseEventArgs e)

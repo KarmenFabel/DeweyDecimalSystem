@@ -75,7 +75,7 @@ namespace DeweyLibrary
     }
     public class DeweyDecimalGroup
     {
-        public int deweyKey { get; set; }
+        public string deweyKey { get; set; }
         public string deweyDescrip { get; set; }
     }
 }

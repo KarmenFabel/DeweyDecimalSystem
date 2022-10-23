@@ -387,6 +387,7 @@ namespace DeweyDecimalSystem
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AllowDrop = true;
             this.flowLayoutPanel1.Controls.Add(this.answer1);
             this.flowLayoutPanel1.Controls.Add(this.answer2);
             this.flowLayoutPanel1.Controls.Add(this.answer3);
@@ -405,7 +406,7 @@ namespace DeweyDecimalSystem
             // 
             this.lblquestion.AutoSize = true;
             this.lblquestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblquestion.Location = new System.Drawing.Point(357, 24);
+            this.lblquestion.Location = new System.Drawing.Point(358, 41);
             this.lblquestion.Name = "lblquestion";
             this.lblquestion.Size = new System.Drawing.Size(66, 24);
             this.lblquestion.TabIndex = 41;
