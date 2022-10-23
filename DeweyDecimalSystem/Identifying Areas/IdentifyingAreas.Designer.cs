@@ -48,17 +48,18 @@ namespace DeweyDecimalSystem
             this.answer7 = new System.Windows.Forms.FlowLayoutPanel();
             this.answer2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblquestion3 = new System.Windows.Forms.Label();
             this.flPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.question1 = new System.Windows.Forms.Label();
             this.flPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblquestion4 = new System.Windows.Forms.Label();
             this.flPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblquestion2 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblquestion = new System.Windows.Forms.Label();
             this.lblAnswer = new System.Windows.Forms.Label();
-            this.question1 = new System.Windows.Forms.Label();
-            this.lblquestion2 = new System.Windows.Forms.Label();
-            this.lblquestion3 = new System.Windows.Forms.Label();
-            this.lblquestion4 = new System.Windows.Forms.Label();
+            this.btnDone = new System.Windows.Forms.Button();
             this.answer1.SuspendLayout();
             this.answer4.SuspendLayout();
             this.answer3.SuspendLayout();
@@ -297,6 +298,15 @@ namespace DeweyDecimalSystem
             this.flPanel6.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
             this.flPanel6.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
+            // lblquestion3
+            // 
+            this.lblquestion3.AutoSize = true;
+            this.lblquestion3.Location = new System.Drawing.Point(3, 0);
+            this.lblquestion3.Name = "lblquestion3";
+            this.lblquestion3.Size = new System.Drawing.Size(35, 13);
+            this.lblquestion3.TabIndex = 0;
+            this.lblquestion3.Text = "label3";
+            // 
             // flPanel1
             // 
             this.flPanel1.AllowDrop = true;
@@ -309,6 +319,15 @@ namespace DeweyDecimalSystem
             this.flPanel1.TabIndex = 25;
             this.flPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
             this.flPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
+            // 
+            // question1
+            // 
+            this.question1.AutoSize = true;
+            this.question1.Location = new System.Drawing.Point(3, 0);
+            this.question1.Name = "question1";
+            this.question1.Size = new System.Drawing.Size(35, 13);
+            this.question1.TabIndex = 0;
+            this.question1.Text = "label1";
             // 
             // flPanel7
             // 
@@ -323,6 +342,15 @@ namespace DeweyDecimalSystem
             this.flPanel7.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
             this.flPanel7.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
             // 
+            // lblquestion4
+            // 
+            this.lblquestion4.AutoSize = true;
+            this.lblquestion4.Location = new System.Drawing.Point(3, 0);
+            this.lblquestion4.Name = "lblquestion4";
+            this.lblquestion4.Size = new System.Drawing.Size(35, 13);
+            this.lblquestion4.TabIndex = 0;
+            this.lblquestion4.Text = "label4";
+            // 
             // flPanel2
             // 
             this.flPanel2.AllowDrop = true;
@@ -335,6 +363,15 @@ namespace DeweyDecimalSystem
             this.flPanel2.TabIndex = 28;
             this.flPanel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragDrop);
             this.flPanel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.flPanel1_DragEnter);
+            // 
+            // lblquestion2
+            // 
+            this.lblquestion2.AutoSize = true;
+            this.lblquestion2.Location = new System.Drawing.Point(3, 0);
+            this.lblquestion2.Name = "lblquestion2";
+            this.lblquestion2.Size = new System.Drawing.Size(35, 13);
+            this.lblquestion2.TabIndex = 0;
+            this.lblquestion2.Text = "label2";
             // 
             // menuStrip2
             // 
@@ -384,41 +421,15 @@ namespace DeweyDecimalSystem
             this.lblAnswer.TabIndex = 42;
             this.lblAnswer.Text = "label2";
             // 
-            // question1
+            // btnDone
             // 
-            this.question1.AutoSize = true;
-            this.question1.Location = new System.Drawing.Point(3, 0);
-            this.question1.Name = "question1";
-            this.question1.Size = new System.Drawing.Size(35, 13);
-            this.question1.TabIndex = 0;
-            this.question1.Text = "label1";
-            // 
-            // lblquestion2
-            // 
-            this.lblquestion2.AutoSize = true;
-            this.lblquestion2.Location = new System.Drawing.Point(3, 0);
-            this.lblquestion2.Name = "lblquestion2";
-            this.lblquestion2.Size = new System.Drawing.Size(35, 13);
-            this.lblquestion2.TabIndex = 0;
-            this.lblquestion2.Text = "label2";
-            // 
-            // lblquestion3
-            // 
-            this.lblquestion3.AutoSize = true;
-            this.lblquestion3.Location = new System.Drawing.Point(3, 0);
-            this.lblquestion3.Name = "lblquestion3";
-            this.lblquestion3.Size = new System.Drawing.Size(35, 13);
-            this.lblquestion3.TabIndex = 0;
-            this.lblquestion3.Text = "label3";
-            // 
-            // lblquestion4
-            // 
-            this.lblquestion4.AutoSize = true;
-            this.lblquestion4.Location = new System.Drawing.Point(3, 0);
-            this.lblquestion4.Name = "lblquestion4";
-            this.lblquestion4.Size = new System.Drawing.Size(35, 13);
-            this.lblquestion4.TabIndex = 0;
-            this.lblquestion4.Text = "label4";
+            this.btnDone.Location = new System.Drawing.Point(38, 173);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(75, 23);
+            this.btnDone.TabIndex = 43;
+            this.btnDone.Text = "Done";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // IdentifyingAreas
             // 
@@ -427,6 +438,7 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(829, 499);
+            this.Controls.Add(this.btnDone);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.lblquestion);
             this.Controls.Add(this.pictureBox3);
@@ -500,5 +512,6 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Label question1;
         private System.Windows.Forms.Label lblquestion4;
         private System.Windows.Forms.Label lblquestion2;
+        private System.Windows.Forms.Button btnDone;
     }
 }

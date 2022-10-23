@@ -15,73 +15,23 @@ namespace DeweyDecimalSystem
     {
        
 
-        String CallNumber = "Call Number";
-        String Description = "Descriptions";
-
         public IdentifyingAreas()
         {
             InitializeComponent();
-            CalNumsFirst();
-            int count = testDictionary2.Keys.Count;
+            DescFirst();
+          
         }
+
        
-        public void DescFirst()
-        {
-            lblquestion.Text = Description;
-            lblAnswer.Text = CallNumber;
-            var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
-                lbl7 };
-            var questions = new[] {question1,lblquestion2,lblquestion3, lblquestion4 };
-
-            Random random = new Random();
-           
-
-            for (int i = 0; i < 7; ++i)
-            {
-                int index = random.Next(testDictionary2.Count);
-                KeyValuePair< int, DeweyDecimalGroup> pair = testDictionary2.ElementAt(index);
-                labels[i].Text = pair.Value.deweyDescrip;
-                //dataGridView1.Rows.Add(pair.Value.deweyDescrip);
-
-                // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
-//Dit werk nie want hy kry net die eerste een in die for loop se waarde
-                for (int b = 0; b < 4; ++b)
-                {
-                    questions[b].Text = pair.Key.ToString();
-                    
-
-                }
-               
-            }
-
-
-
-
-        }
-        public void CalNumsFirst()
-        {
-
-            lblquestion.Text = CallNumber;
-            lblAnswer.Text= Description;
-            Random random = new Random();
-            var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
-                lbl7 };
-            for (int i = 0; i < 7; ++i)
-            {
-                int index = random.Next(testDictionary2.Count);
-                KeyValuePair<int, DeweyDecimalGroup> pair = testDictionary2.ElementAt(index);
-                labels[i].Text = pair.Value.deweyKey.ToString();
-                //  dataGridView1.Rows.Add(pair.Value.deweyKey.ToString());
-
-                // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
-            }
-        }
-
 
         private void btnSwitch_Click(object sender, EventArgs e)
         {
-            if(lblquestion.Text ==CallNumber)
+            if(lblquestion.Text == Library.CallNumber)
             {
+                //Hide();
+                //var reopen = new IdentifyingAreas();
+                //reopen.ShowDialog();
+               // Dispose();
                 this.Controls.Clear();
                 this.InitializeComponent();
                 
@@ -91,7 +41,8 @@ namespace DeweyDecimalSystem
             }
             else
             {
-                
+
+               
                 this.Controls.Clear();
                 this.InitializeComponent();
                 CalNumsFirst();
@@ -142,6 +93,16 @@ namespace DeweyDecimalSystem
         {
             var control = sender as Control;
             this.DoDragDrop(control.Name, DragDropEffects.Move);
+        }
+       
+
+            private void btnDone_Click(object sender, EventArgs e)
+        {
+            
+                PanelCorrect();
+            
+            
+
         }
     }
 }

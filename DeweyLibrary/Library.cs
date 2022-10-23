@@ -11,7 +11,12 @@ namespace DeweyLibrary
     public class Library
     {
 
-       //Global random called
+        //Identifying Areas Header Labels
+        public static string CallNumber = "Call Number";
+        public static string Description = "Descriptions";
+        //Key for Dictionary
+        
+        //Global random called
         public static Random rnd = new Random();
 
         public static decimal GetRandom(decimal min, decimal max)

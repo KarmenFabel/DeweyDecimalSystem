@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeweyLibrary;
+using System.Windows.Forms;
 
 
 namespace DeweyDecimalSystem
@@ -11,7 +10,7 @@ namespace DeweyDecimalSystem
     public partial class IdentifyingAreas
     {
 
-        Dictionary<int, DeweyDecimalGroup> testDictionary2 = deweyGroups();
+        Dictionary<int, DeweyDecimalGroup> deweyDictionary = deweyGroups();
 
         public static  Dictionary<int, DeweyDecimalGroup> deweyGroups()
         {
@@ -65,21 +64,226 @@ namespace DeweyDecimalSystem
                 deweyKey = 900,//between 900 - 999;
                 deweyDescrip = "Geography and History"
             };
-            Dictionary<int, DeweyDecimalGroup> testDictionary = new Dictionary<int, DeweyDecimalGroup>();
-            testDictionary.Add(dewey1.deweyKey, dewey1);
-            testDictionary.Add(dewey2.deweyKey, dewey2);
-            testDictionary.Add(dewey3.deweyKey, dewey3);
-            testDictionary.Add(dewey4.deweyKey, dewey4);
-            testDictionary.Add(dewey5.deweyKey, dewey5);
-            testDictionary.Add(dewey6.deweyKey, dewey6);
-            testDictionary.Add(dewey7.deweyKey, dewey7);
-            testDictionary.Add(dewey8.deweyKey, dewey8);
-            testDictionary.Add(dewey9.deweyKey, dewey9);
-            testDictionary.Add(dewey10.deweyKey, dewey10);
-            return testDictionary;
+            Dictionary<int, DeweyDecimalGroup> dewDict = new Dictionary<int, DeweyDecimalGroup>();
+            dewDict.Add(0, dewey1);
+            dewDict.Add(1, dewey2);
+            dewDict.Add(2, dewey3);
+            dewDict.Add(3, dewey4);
+            dewDict.Add(4, dewey5);
+            dewDict.Add(5, dewey6);
+            dewDict.Add(6, dewey7);
+            dewDict.Add(7, dewey8);
+            dewDict.Add(8, dewey9);
+            dewDict.Add(9, dewey10);
+            //dewDict.Add(dewey10.deweyKey, dewey10);
+            return dewDict;
         }
+        List<string> fourRandomDescriptions = new List<string>();
+        public void DescFirst()
+        {
+            List<int> randoms = Enumerable.Range(0, 9).ToList();
+            List<int> sevenRandoms = new List<int>();
+
+            lblquestion.Text = Library.Description;
+            lblAnswer.Text = Library.CallNumber;
+            var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
+                lbl7 };
+            var questions = new[] { question1, lblquestion2, lblquestion3, lblquestion4 };
+
+            Random random = new Random();
+            for (int i = 0; i < 7; ++i)
+            {
+                int index = random.Next(0, randoms.Count);
+                //make first number 001 
+                if (index == 0)
+                {
+                     string convert = "001";
+                    sevenRandoms.Add(Int32.Parse(convert));
+                    //sevenRandoms.Add(index);
+                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
+                    fourRandomDescriptions.Add(pair.Value.deweyDescrip);
+                }
+                else
+                {
+                    string convert = randoms[index].ToString() + "00";
+                    sevenRandoms.Add(Int32.Parse(convert));
+                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
+                    fourRandomDescriptions.Add(pair.Value.deweyDescrip);
+                }
+                randoms.RemoveAt(index);
+                // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
+
+            }
+            for (var i = 0; i != sevenRandoms.Count; i++)
+            {
+                //foreach label add a dewey list number
+                labels[i].Text = sevenRandoms[i].ToString();
+            }
+            for (var i = 0; i != 4; i++)
+            {
+                questions[i].Text = fourRandomDescriptions[i];
+            }
+
+
+
+        }
+        List<int> fourRandomCallNumbers = new List<int>();
+        public void CalNumsFirst()
+        {
+            List<int> randoms = Enumerable.Range(0, 9).ToList();
+            List<string> sevenRandoms = new List<string>();
+
+            lblquestion.Text = Library.CallNumber;
+            lblAnswer.Text = Library.Description;
+            var labels = new[] { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6 ,
+                lbl7 };
+
+            var questions = new[] { question1, lblquestion2, lblquestion3, lblquestion4 };
+
+            Random random = new Random();
+            for (int i = 0; i < 7; ++i)
+            {
+                int index = random.Next(0, randoms.Count);
+                //make first number 001 
+                if (index == 0)
+                {
+                    // string convert = "001";
+                    //sevenRandoms.Add(Int32.Parse(convert));
+                    KeyValuePair<int, DeweyDecimalGroup> pair
+                        = deweyDictionary.ElementAt(index);
+                    sevenRandoms.Add(pair.Value.deweyDescrip);
+                    fourRandomCallNumbers.Add(index);
+                }
+                else
+                {
+                    string convert = randoms[index].ToString() + "00";
+                    fourRandomCallNumbers.Add(Int32.Parse(convert));
+                    KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(index);
+                    sevenRandoms.Add(pair.Value.deweyDescrip);
+
+                }
+                randoms.RemoveAt(index);
+                // Console.WriteLine("key: " + pair.Key + ", value: " + pair.Value);
+
+            }
+            for (var i = 0; i != sevenRandoms.Count; i++)
+            {
+                //foreach label add a dewey list number
+                labels[i].Text = sevenRandoms[i];
+            }
+            for (var i = 0; i != 4; i++)
+            {
+                questions[i].Text = fourRandomCallNumbers[i].ToString();
+            }
+
+
+
+        }
+
+        int key { get; set; }
+        public void DescriptAnswers(FlowLayoutPanel panel)
+        {
+           
+            foreach (var item in panel.Controls)
+            {
+                if (item is Label)
+                {
+                    Label label = (Label)item;
+                    key = deweyDictionary.Where(pair => pair.Value.deweyDescrip == label.Text) 
+                   .Select(pair => pair.Key)
+                   .FirstOrDefault();
+                    
+                }
+
+                if (item is FlowLayoutPanel)
+                {
+                    FlowLayoutPanel answer = (FlowLayoutPanel)item;
+                    foreach (var ans in answer.Controls)
+                        if (ans is Label)
+                        {
+                            KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(key);
+                            Label label = (Label)ans;
+                            if (label.Text == pair.Value.deweyKey.ToString())
+                            {
+
+                                MessageBox.Show(label.Text + "is equal to" +
+                                     key.ToString());
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect" + label.Text + " is not equal to" +
+                                   key.ToString());
+                            }
+                        }
+                }
+            }
+        }
+      
+        public void CallAnswers(FlowLayoutPanel panel)
+        {
+           
+            foreach (var item in panel.Controls)
+            {
+                if (item is Label)
+                {
+                    // pair.Value.deweyDescrip
+                    Label label = (Label)item;
+                    key = deweyDictionary.Where(pair => pair.Value.deweyKey.ToString() == label.Text)
+                   .Select(pair => pair.Key)
+                   .FirstOrDefault();
+                }
+
+                if (item is FlowLayoutPanel)
+                {
+                    FlowLayoutPanel answer = (FlowLayoutPanel)item;
+                    foreach (var ans in answer.Controls)
+                        if (ans is Label)
+                        {
+                            Label label = (Label)ans;
+                            
+                                 KeyValuePair<int, DeweyDecimalGroup> pair = deweyDictionary.ElementAt(key);
+                                
+                            if (label.Text == pair.Value.deweyDescrip)
+                            {
+
+                                MessageBox.Show(label.Text + "is equal to" +
+                                     pair.Value.deweyDescrip);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect" + label.Text + " is not equal to" +
+                                   pair.Value.deweyDescrip);
+                            }
+                        }
+                }
+            }
+        }
+        public void PanelCorrect()
+        { if (lblquestion.Text==Library.CallNumber)
+            {
+
+                CallAnswers(flPanel1);
+                CallAnswers(flPanel2);
+                CallAnswers(flPanel6);
+                CallAnswers(flPanel7);
+
+
+            }
+            else 
+            {
+                
+                DescriptAnswers(flPanel1);
+                DescriptAnswers(flPanel2);
+                DescriptAnswers(flPanel6);
+                DescriptAnswers(flPanel7);
+
+
+            }
+           
+        }
+
     }
 
-  
-   
+
+
 }
