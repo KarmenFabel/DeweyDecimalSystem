@@ -29,6 +29,7 @@ namespace DeweyDecimalSystem
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IdentifyingAreas));
             this.btnSwitch = new System.Windows.Forms.Button();
             this.lbl7 = new System.Windows.Forms.Label();
@@ -62,6 +63,8 @@ namespace DeweyDecimalSystem
             this.btnDone = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.answer1.SuspendLayout();
             this.answer4.SuspendLayout();
             this.answer3.SuspendLayout();
@@ -80,7 +83,7 @@ namespace DeweyDecimalSystem
             // 
             // btnSwitch
             // 
-            this.btnSwitch.Location = new System.Drawing.Point(598, 70);
+            this.btnSwitch.Location = new System.Drawing.Point(595, 189);
             this.btnSwitch.Name = "btnSwitch";
             this.btnSwitch.Size = new System.Drawing.Size(75, 23);
             this.btnSwitch.TabIndex = 6;
@@ -428,7 +431,7 @@ namespace DeweyDecimalSystem
             // 
             // btnDone
             // 
-            this.btnDone.Location = new System.Drawing.Point(598, 119);
+            this.btnDone.Location = new System.Drawing.Point(595, 238);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(75, 23);
             this.btnDone.TabIndex = 43;
@@ -450,13 +453,24 @@ namespace DeweyDecimalSystem
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(598, 171);
+            this.button1.Location = new System.Drawing.Point(595, 290);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 45;
             this.button1.Text = "Continue";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(598, 49);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(68, 39);
+            this.lblScore.TabIndex = 46;
+            this.lblScore.Text = "0/0";
             // 
             // IdentifyingAreas
             // 
@@ -465,6 +479,7 @@ namespace DeweyDecimalSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(829, 499);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnDone);
@@ -544,5 +559,7 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Timer timer1;
     }
 }

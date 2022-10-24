@@ -12,6 +12,7 @@ namespace DeweyDecimalSystem
 			InitializeComponent();
 			DescFirst();
 
+
 		}
 		private void btnSwitch_Click(object sender, EventArgs e)
 		{
@@ -24,12 +25,14 @@ namespace DeweyDecimalSystem
 
 				ButtonClickClear();
 				DescFirst();
+				lblScore.Text = Score();
 			}
 			else
             {
                 ButtonClickClear();
                 CalNumsFirst();
-            }
+				lblScore.Text = Score();
+			}
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -65,6 +68,7 @@ namespace DeweyDecimalSystem
             PanelCorrect();
             EndScoreMessage();
 
+
             MainPage MP = new MainPage();
             this.Hide();
             MP.ShowDialog();
@@ -77,11 +81,13 @@ namespace DeweyDecimalSystem
 			{
 				ButtonClickClear();
 				CalNumsFirst();
+				lblScore.Text = Score();
 			}
 			else
 			{
 				ButtonClickClear();
 				DescFirst();
+				lblScore.Text = Score();
 			}
 
 		}

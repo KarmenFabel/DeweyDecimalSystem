@@ -21,6 +21,15 @@ namespace DeweyDecimalSystem
             questions = new[] { question1, lblquestion2, lblquestion3, lblquestion4 };
         }
         /// <summary>
+        /// Score and total questions answered are added to string
+        /// </summary>
+        /// <returns></returns>
+        public static String Score()
+        {
+            String score = Library.Points.ToString() + "/" + (Library.Points + Library.WrongPoints).ToString();
+            return score;
+        }
+        /// <summary>
         /// Add Dictionary values to Labels
         /// </summary>
         /// <param name="question"></param>
@@ -59,27 +68,45 @@ namespace DeweyDecimalSystem
                 questions[i].Text = Library.FourRandomItems[i];
             }
         }
+        /// <summary>
+        /// Getting the Values for the callnumbers as questions and  Description as answers
+        /// </summary>
+        /// <param name="i"></param>
         public void CallAnswer(int i)
         {
             KeyValuePair<int, DeweyDecimalGroup> pair = Library.deweyDictionary.ElementAt(i);
             Library.sevenRandoms.Add(pair.Value.deweyDescrip);
             Library.FourRandomItems.Add(pair.Value.deweyKey);
         }
+        /// <summary>
+        /// Getting the Values for the Description as questions and   callnumbers as answers
+        /// </summary>
+        /// <param name="i"></param>
         public void DescAnswer(int i)
         {
             KeyValuePair<int, DeweyDecimalGroup> pair = Library.deweyDictionary.ElementAt(i);
             Library.sevenRandoms.Add(pair.Value.deweyKey);
             Library.FourRandomItems.Add(pair.Value.deweyDescrip);
         }
+        /// <summary>
+        /// Populating the call numbers as questions and Descriptions as answers
+        /// </summary>
         public void CalNumsFirst()
         {
             PopulatingLabels(Library.CallNumber, Library.Description);
 
         }
+        /// <summary>
+        /// Populating the call numbers as questions and Descriptions as answers
+        /// </summary>
         public void DescFirst()
         {
             PopulatingLabels(Library.Description, Library.CallNumber);
         }
+        /// <summary>
+        /// Finding Answers
+        /// </summary>
+        /// <param name="panel"></param>
         
         public void Answers(FlowLayoutPanel panel)
         {
@@ -98,50 +125,66 @@ namespace DeweyDecimalSystem
                             if (lblquestion.Text == Library.Description)
                             {
                                 AddPointsDescriptionAnswered(pair, label);
-
                             }
                             else
                             {
                                 AddPointsCallNumAnswered(pair, label);
-
                             }
 
                         }
                 }
             }
         }
-
-        private static void AddPointsCallNumAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
+        /// <summary>
+        /// Add Points correct where call numbers are questions
+        /// </summary>
+        /// <param name="pair"></param>
+        /// <param name="label"></param>
+        private  void AddPointsCallNumAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
         {
             if (label.Text == pair.Value.deweyDescrip)
             {
                 Library.PointCounter();
                 Console.WriteLine(label.Text + "is equal to" +
                      pair.Value.deweyDescrip);
+                Score();
+                timer1.Start();
             }
             else
             {
                 Library.WrongPointCounter();
                 Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
                    pair.Value.deweyDescrip);
+                timer1.Start();
             }
         }
 
-        private static void AddPointsDescriptionAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
+        /// <summary>
+        /// Add Points correct where description are questions
+        /// </summary>
+        /// <param name="pair"></param>
+        /// <param name="label"></param>
+        private void AddPointsDescriptionAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
         {
             if (label.Text == pair.Value.deweyKey.ToString())
             {
                 Library.PointCounter();
                 Console.WriteLine(label.Text + "is equal to" +
                      Library.key.ToString());
+                
             }
             else
             {
                 Library.WrongPointCounter();
                 Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
                    Library.key.ToString());
+             
             }
         }
+        /// <summary>
+        /// find either call number as questions or description as questions
+        /// </summary>
+        /// <param name="item"></param>
 
         private void FindQuestions(object item)
         {
@@ -157,7 +200,10 @@ namespace DeweyDecimalSystem
                 }
             }
         }
-
+        /// <summary>
+        /// Find the key of the question label if Call numbers are questions
+        /// </summary>
+        /// <param name="item"></param>
         private void CallIsQuestion(object item)
         {
             // pair.Value.deweyDescrip
@@ -167,6 +213,10 @@ namespace DeweyDecimalSystem
            .FirstOrDefault();
         }
 
+        /// <summary>
+        /// Find the key of the question label if Description are questions
+        /// </summary>
+        /// <param name="item"></param>
         private void DescriptionIsQuestion(object item)
         {
             Label label = (Label)item;
@@ -181,7 +231,9 @@ namespace DeweyDecimalSystem
                 Answers(flPanel6);
                 Answers(flPanel7);
         }
-
+        /// <summary>
+        /// Clear screen to add panels back in place and clear Lists
+        /// </summary>
         private void ButtonClickClear()
         {
             this.Controls.Clear();
@@ -189,10 +241,18 @@ namespace DeweyDecimalSystem
             Library.FourRandomItems.Clear();
             Library.sevenRandoms.Clear();
         }
-        private static void EndScoreMessage()
+        /// <summary>
+        /// End Message 
+        /// </summary>
+        private void EndScoreMessage()
         {
+            
             MessageBox.Show("You got " + Library.Points.ToString() + " Correct \r\n\r\n and you got " +
-                            Library.WrongPoints.ToString() + " incorrect");
+                            Library.WrongPoints.ToString() );
+           //Clear points if user goes to main screen and then go back to this page
+            Library.Points =0;
+            Library.WrongPoints =0;
+           
         }
 
 
