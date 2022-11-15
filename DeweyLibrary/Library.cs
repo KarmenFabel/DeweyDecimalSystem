@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DeweyLibrary
@@ -190,4 +191,27 @@ namespace DeweyLibrary
         public string deweyKey { get; set; }
         public string deweyDescrip { get; set; }
     }
+    public class Root
+    {
+        public string callnumber { get; set; }
+        public string description { get; set; }
+        public SecondIteration SecondIteration { get; set; }
+    }
+
+    public class SecondIteration
+    {
+        public string callnumber { get; set; }
+        public string description { get; set; }
+        public List<ThirdIteration> ThirdIteration { get; set; }
+    }
+
+    public class ThirdIteration
+    {
+        public string callnumber { get; set; }
+        public string description { get; set; }
+    }
+
+
+
+
 }

@@ -60,7 +60,6 @@ namespace DeweyDecimalSystem
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblquestion = new System.Windows.Forms.Label();
             this.lblAnswer = new System.Windows.Forms.Label();
-            this.btnDone = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblScore = new System.Windows.Forms.Label();
@@ -429,16 +428,6 @@ namespace DeweyDecimalSystem
             this.lblAnswer.TabIndex = 42;
             this.lblAnswer.Text = "label2";
             // 
-            // btnDone
-            // 
-            this.btnDone.Location = new System.Drawing.Point(595, 238);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(75, 23);
-            this.btnDone.TabIndex = 43;
-            this.btnDone.Text = "Done";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -453,7 +442,7 @@ namespace DeweyDecimalSystem
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(595, 290);
+            this.button1.Location = new System.Drawing.Point(595, 232);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 45;
@@ -482,7 +471,6 @@ namespace DeweyDecimalSystem
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.btnDone);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.lblquestion);
             this.Controls.Add(this.pictureBox3);
@@ -556,7 +544,6 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.Label question1;
         private System.Windows.Forms.Label lblquestion4;
         private System.Windows.Forms.Label lblquestion2;
-        private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblScore;

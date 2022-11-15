@@ -58,14 +58,18 @@ namespace DeweyDecimalSystem
             }
             //Make answers appear in random order
             List<string> sevenRandoms2 = Library.Randomize(Library.sevenRandoms);
-            for (var i = 0; i != sevenRandoms2.Count; i++)
+            //Make answers appear in random order again to be even more random
+            List<string> sevenRandoms3 = Library.Randomize(sevenRandoms2);
+
+            for (var i = 0; i != sevenRandoms3.Count; i++)
             {
                 //foreach label add a dewey list number
-                labels[i].Text = sevenRandoms2[i].ToString();
+                labels[i].Text = sevenRandoms3[i].ToString();
             }
+            List<string> fourRandoms = Library.Randomize(Library.FourRandomItems);
             for (var i = 0; i != 4; i++)
             {
-                questions[i].Text = Library.FourRandomItems[i];
+                questions[i].Text = fourRandoms[i].ToString();
             }
         }
         /// <summary>
@@ -236,8 +240,17 @@ namespace DeweyDecimalSystem
         /// </summary>
         private void ButtonClickClear()
         {
-            this.Controls.Clear();
-            this.InitializeComponent();
+            flowLayoutPanel1.Controls.Add(answer1);
+            flowLayoutPanel1.Controls.Add(answer2);
+            flowLayoutPanel1.Controls.Add(answer3);
+            flowLayoutPanel1.Controls.Add(answer4);
+            flowLayoutPanel1.Controls.Add(answer5);
+            flowLayoutPanel1.Controls.Add(answer6);
+            flowLayoutPanel1.Controls.Add(answer7);
+
+
+           // this.Controls.Clear();
+            //this.InitializeComponent();
             Library.FourRandomItems.Clear();
             Library.sevenRandoms.Clear();
         }
@@ -248,7 +261,7 @@ namespace DeweyDecimalSystem
         {
             
             MessageBox.Show("You got " + Library.Points.ToString() + " Correct \r\n\r\n and you got " +
-                            Library.WrongPoints.ToString() );
+                            Library.WrongPoints.ToString() + " incorrect" );
            //Clear points if user goes to main screen and then go back to this page
             Library.Points =0;
             Library.WrongPoints =0;

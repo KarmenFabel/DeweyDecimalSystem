@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeweyDecimalSystem.Call_Numbers;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -29,6 +30,13 @@ namespace DeweyDecimalSystem
             IdentifyingAreas IA = new IdentifyingAreas();
             this.Hide();
             IA.ShowDialog();
+        }
+
+        private void picBoxFindCallNum_Click(object sender, EventArgs e)
+        {
+            CallNumber CN = new CallNumber();
+            this.Hide();
+            CN.ShowDialog();
         }
     }
 }

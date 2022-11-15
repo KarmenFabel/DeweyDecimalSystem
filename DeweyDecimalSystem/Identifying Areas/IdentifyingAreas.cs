@@ -37,6 +37,9 @@ namespace DeweyDecimalSystem
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
 		{
+			PanelCorrect();
+			EndScoreMessage();
+
 			MainPage MP = new MainPage();
 			this.Hide();
 			MP.ShowDialog();
@@ -63,29 +66,20 @@ namespace DeweyDecimalSystem
 			var control = sender as Control;
 			this.DoDragDrop(control.Name, DragDropEffects.Move);
 		}
-		private void btnDone_Click(object sender, EventArgs e)
-        {
-            PanelCorrect();
-            EndScoreMessage();
-
-
-            MainPage MP = new MainPage();
-            this.Hide();
-            MP.ShowDialog();
-
-        }
+		
         private void button1_Click(object sender, EventArgs e)
 		{
 			PanelCorrect();
+			ButtonClickClear();
 			if (lblquestion.Text == Library.CallNumber)
 			{
-				ButtonClickClear();
+			
 				CalNumsFirst();
 				lblScore.Text = Score();
 			}
 			else
 			{
-				ButtonClickClear();
+			
 				DescFirst();
 				lblScore.Text = Score();
 			}
