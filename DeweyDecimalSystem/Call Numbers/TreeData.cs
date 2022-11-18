@@ -63,39 +63,51 @@ namespace DeweyDecimalSystem.Call_Numbers
 
         public static TreeNode<string> GetSet1()
         {
-            
 
             
-           // var path = Path.GetFileName(GetPath());
-           // string jsonFile = File.ReadAllText(path);
+            /*
+            var path = Path.GetFileName(GetPath());
+            string jsonFile = File.ReadAllText(path);
+           
 
-            //var jsonObject = JsonConvert.DeserializeObject<List<DeweyLibrary.Root>>(jsonFile);
+            var jsonObject = JsonConvert.DeserializeObject<List<Root>>(jsonFile);
+            //var newJsonObj = JsonConvert.DeserializeObject(jsonFile);
 
-            // var tree = new TreeNode ("root")
-           /* TreeNode<string> tree = new TreeNode<string>("root");
+            //var tree = new TreeNode ("root")
+            foreach (var thing in jsonObject)
             {
-                foreach (var item in jsonObject)
+                TreeNode<Root> tree = new TreeNode<DeweyLibrary.Root>(thing.callnumber + thing.description);
                 {
-                    new TreeNode<string>(item.callnumber + item.description);
-
-
-                }*/
-
-                TreeNode<string> root = new TreeNode<string>("root");
-                {
-                    TreeNode<string> node0 = root.AddChild("000 General Knowledge");
+                    foreach (var item in tree)
                     {
+                        new TreeNode<string>(item.callnumber + item.description);
 
-                        TreeNode<string> node01 = node0.AddChild("010 - Bibliography");
-                        {
-                            TreeNode<string> node011 = node01.AddChild("011 Bibliographies ");
-                            TreeNode<string> node012 = node01.AddChild("012 Bibliographies of individuals");
-                            TreeNode<string> node013 = node01.AddChild("013 Bibliographies of works by specific classes of authors");
-                            TreeNode<string> node014 = node01.AddChild("014  Bibliographies of anonymous and pseudonymous works");
-                        }
-                    TreeNode<string> node02 = node0.AddChild("2172 - Test1");
-                    TreeNode<string> node03 = node0.AddChild("1231 - Test2");
-                    TreeNode<string> node04 = node0.AddChild("1313 - Test3");
+
+                    }
+                }
+            }*/
+           
+
+            var path = Path.GetFileName(GetPath());
+            string jsonFile = File.ReadAllText(path);
+            
+
+            var jsonObject = JsonConvert.DeserializeObject<List<Root>>(jsonFile);
+      
+
+            TreeNode<string> root = new TreeNode<string>("root");
+            {
+                TreeNode<string> node0 = root.AddChild("000 General Knowledge");
+                {
+
+                    TreeNode<string> node01 = node0.AddChild("010 - Bibliography");
+                    {
+                        TreeNode<string> node011 = node01.AddChild("011 Bibliographies ");
+                        TreeNode<string> node012 = node01.AddChild("012 Bibliographies of individuals");
+                        TreeNode<string> node013 = node01.AddChild("013 Bibliographies of works by specific classes of authors");
+                        TreeNode<string> node014 = node01.AddChild("014  Bibliographies of anonymous and pseudonymous works");
+                    }
+                    
 
                 }
                 TreeNode<string> node1 = root.AddChild("100 - Philosophy and Psychology");
@@ -105,107 +117,73 @@ namespace DeweyDecimalSystem.Call_Numbers
                         TreeNode<string> node111 = node11.AddChild("121 Epistemology (Theory of knowledge) ");
                         TreeNode<string> node112 = node11.AddChild("122 Causation");
                         TreeNode<string> node113 = node11.AddChild("123 Determinism & indeterminism");
-                        TreeNode<string> node114 = node11.AddChild("125 Not assigned or no longer used ");
                         TreeNode<string> node115 = node11.AddChild("126 The self");
                         TreeNode<string> node116 = node11.AddChild("127 The unconscious & the subconscious");
                         TreeNode<string> node117 = node11.AddChild("128 Humankind ");
                     }
                 }
-
-
+                TreeNode<string> node2 = root.AddChild("200 - Religion ");
+                {
+                    TreeNode<string> node11 = node1.AddChild("230 – Christian theology");
+                    {
+                        TreeNode<string> node111 = node11.AddChild("231 God");
+                        TreeNode<string> node112 = node11.AddChild("232 Jesus Christ & his family");
+                        TreeNode<string> node113 = node11.AddChild("233 Humankind ");
+                        TreeNode<string> node114 = node11.AddChild("234 Salvation (Soteriology) & grace");
+                        TreeNode<string> node115 = node11.AddChild("235 Spiritual beings");
+                        TreeNode<string> node116 = node11.AddChild("236 Eschatology");
+                        TreeNode<string> node117 = node11.AddChild("238 Creeds & catechisms");
+                    }
+                }
+                TreeNode<string> node3 = root.AddChild("300 - Social Sciences");
+                {
+                    TreeNode<string> node11 = node1.AddChild("340 - Law");
+                    {
+                        TreeNode<string> node111 = node11.AddChild("341 International law");
+                        TreeNode<string> node112 = node11.AddChild("342 Constitutional & administrative law");
+                        TreeNode<string> node113 = node11.AddChild("343 Military, tax, trade, industrial law");
+                        TreeNode<string> node114 = node11.AddChild("344 Social, labour, welfare, & related law");
+                        TreeNode<string> node115 = node11.AddChild("345 Criminal law");
+                        TreeNode<string> node116 = node11.AddChild("346 Private law");
+                        TreeNode<string> node117 = node11.AddChild("347 Civil procedure & courts");
+                        TreeNode<string> node118 = node11.AddChild("348 Law (Statutes), regulations, cases");
+                    }
+                }
+                TreeNode<string> node4 = root.AddChild(" 400 - Languages ");
+                {
+                    TreeNode<string> node11 = node1.AddChild("450 – Italian, Romanian and Rhaeto-Roman");
+                    {
+                        TreeNode<string> node111 = node11.AddChild("451 Italian writing system & phonology");
+                        TreeNode<string> node112 = node11.AddChild("452 Italian etymology");
+                        TreeNode<string> node113 = node11.AddChild("453 Italian dictionaries");
+                        TreeNode<string> node114 = node11.AddChild("454 Not assigned or no longer used");
+                        TreeNode<string> node115 = node11.AddChild("455 Italian grammar");
+                        TreeNode<string> node116 = node11.AddChild("457 Italian language variations");
+                        TreeNode<string> node117 = node11.AddChild("458 Standard Italian usage");
+                    }
+                }
+                TreeNode<string> node5= root.AddChild("500 - Science");
+                {
+                    TreeNode<string> node11 = node1.AddChild("560 – Palaeontology Paleozoology");
+                    {
+                        TreeNode<string> node111 = node11.AddChild("561 Palaeobotany 562 Palaeobotany");
+                        TreeNode<string> node112 = node11.AddChild("562 Fossil invertebrates");
+                        TreeNode<string> node113 = node11.AddChild("563 Fossil primitive phyla");
+                        TreeNode<string> node114 = node11.AddChild("564 Fossil Mollusca & Molluscoidea");
+                        TreeNode<string> node115 = node11.AddChild("565 Other fossil invertebrates ");
+                        TreeNode<string> node116 = node11.AddChild("566 Fossil Vertebrata (Fossil Craniata) ");
+                        TreeNode<string> node117 = node11.AddChild("567 Fossil cold-blooded vertebrates ");
+                        TreeNode<string> node118 = node11.AddChild("5568 Fossil Aves (Fossil birds) ");
+                    }
+                }
             }
             return root;
             }
 
         }
     }
-
+    /*
     
-
-    
-    /*000 - General Knowledge
-    •	010 - Bibliography
-    o	011 Bibliographies 
-    o	012 Bibliographies of individuals
-    o	013 Bibliographies of works by specific classes of authors
-    o	014  Bibliographies of anonymous and pseudonymous works
-    o	015 Bibliographies of works from specific places
-    o	016 Bibliographies of works from specific subjects
-    o	017 General subject catalogues
-    o	018 Catalogues arranged by author & date
-
-    100 - Philosophy and Psychology
-    •	120 - Epistemology
-    o	121  Epistemology (Theory of knowledge)
-    o	122 Causation
-    o	123 Determinism & indeterminism
-    o	124 Teleology
-    o	125 Not assigned or no longer used 
-    o	126 The self
-    o	127 The unconscious & the subconscious
-    o	128 Humankind 
-
-
-
-
-
-
-    200 - Religion 
-    •	230 – Christian theology
-    o	231 God 
-    o	232 Jesus Christ & his family
-    o	233 Humankind 
-    o	234 Salvation (Soteriology) & grace
-    o	235 Spiritual beings
-    o	236 Eschatology
-    o	237 Not assigned or no longer used
-    o	238 Creeds & catechisms
-
-    300 - Social Sciences
-    •	340 - Law
-    o	341 International law
-    o	342 Constitutional & administrative law
-    o	343 Military, tax, trade, industrial law
-    o	344 Social, labour, welfare, & related law
-    o	345 Criminal law
-    o	346 Private law
-    o	347 Civil procedure & courts
-    o	348 Law (Statutes), regulations, cases
-
-
-
-
-
-
-
-
-    400 - Languages 
-    •	450 – Italian, Romanian and Rhaeto-Roman
-    o	451 Italian writing system & phonology
-    o	452 Italian etymology
-    o	453 Italian dictionaries
-    o	454 Not assigned or no longer used
-    o	455 Italian grammar
-    o	456  Not assigned or no longer used 
-    o	457 Italian language variations
-    o	458 Standard Italian usage
-
-    500 - Science 
-    •	560 – Palaeontology Paleozoology
-    o	561 Palaeobotany 562 Palaeobotany
-    o	562 Fossil invertebrates
-    o	563 Fossil primitive phyla
-    o	564 Fossil Mollusca & Molluscoidea
-    o	565 Other fossil invertebrates 
-    o	566 Fossil Vertebrata (Fossil Craniata) 
-    o	567 Fossil cold-blooded vertebrates 
-    o	568 Fossil Aves (Fossil birds)
-
-
-
-
-
-
 
 
     600 - Technology 

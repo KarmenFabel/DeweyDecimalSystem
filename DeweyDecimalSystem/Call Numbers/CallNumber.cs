@@ -23,12 +23,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         public CallNumber()
         {
             InitializeComponent();
-            
-           // CreateTree();
-            GetRandomThird();
-
-            //myTree.FindTreeNode
-
+            GetRandomLeaf();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -38,46 +33,33 @@ namespace DeweyDecimalSystem.Call_Numbers
             MP.ShowDialog();
         }
 
-        private void question_Click(object sender, EventArgs e)
-        {
-            
-        }
-   
         private void CallNumber_Load(object sender, EventArgs e)
         {
 
             readJSON();
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserAnswer = answer1.Text;
-            MessageAfterButton();
-            buttonClicks++;
+            
+            ButtonActions(answer1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            UserAnswer = answer2.Text;
-            MessageAfterButton();
-            buttonClicks++;
+           
+            ButtonActions(answer2);
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            UserAnswer = answer3.Text;
-            MessageAfterButton();
-            buttonClicks++;
+            ButtonActions(answer3);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            UserAnswer = answer4.Text;
-            MessageAfterButton();
-            buttonClicks++;
+            ButtonActions(answer4);
         }
     }
 }

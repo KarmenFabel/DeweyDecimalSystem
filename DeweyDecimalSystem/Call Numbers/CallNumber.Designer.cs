@@ -75,7 +75,6 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.question.Size = new System.Drawing.Size(129, 27);
             this.question.TabIndex = 20;
             this.question.Text = "Final Answer";
-            this.question.Click += new System.EventHandler(this.question_Click);
             // 
             // answer1
             // 

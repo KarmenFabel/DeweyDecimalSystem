@@ -1,48 +1,55 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DeweyLibrary;
 
 namespace DeweyDecimalSystem.Call_Numbers
 {
     public partial class CallNumber
     {
-        //SearchExample("210");
+        //The Correct option of the four labels
         public string CorrectOption { get; set; }
+        //A list of all available leaves
+        List<string> LeafList = new List<string>();
+        //A list of all possible parents of the Correct option
+        List<string> ParentList = new List<string>();
+        //TreeData
+        TreeNode<string> treeRoot = TreeData.GetSet1();
         public void MessageAfterButton()
         {
-            TreeNode<string> treeRoot = TreeData.GetSet1();
+            //Finding the Node connected to the question
             TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
+            //If userAnswer is equal to the parent of the question
             if (UserAnswer == found.Parent.ToString())
             {
+                
                 MessageBox.Show("Correct! " + UserAnswer +" is in the" + found.Parent.ToString() + " Category");
             } 
             else
             {
                 MessageBox.Show("Incorrect. The correct answer is: " + found.Parent.ToString());
             }
+            //Counts buttonClicks to end when User went through all iterations
             if(buttonClicks<1)
             {
+                //Set label to correct answer
                 question.Text = CorrectOption;
-                SecondIt.Clear();
+                //Clear lists
+                ParentList.Clear();
                 Labels.Clear();
-                GetCorrectParent(1);
+                //get the higher level parent
+                GetRandomAnswers(1);
 
             }else
             {
                 MessageBox.Show("Weldone! You completed the round!");
             }
-           
-            
+
         }
         
         public static string GetPath()
@@ -62,14 +69,9 @@ namespace DeweyDecimalSystem.Call_Numbers
             {
                 JToken root = JToken.Load(jsonReader);
                 DisplayTreeView(root, Path.GetFileNameWithoutExtension(GetPath()));
-            
             }
-
-
         }
        
-
-      
         private void DisplayTreeView(JToken root, string rootName)
         {
            // treeView1.BeginUpdate();
@@ -172,34 +174,40 @@ namespace DeweyDecimalSystem.Call_Numbers
             // TreeNode<string> root = new TreeNode<string>("root");
            
         }
-        List<string> LeafList = new List<string>();
-    
+        
+    /// <summary>
+    /// Find lowest point of the tree
+    /// </summary>
         public void FindLeaf()
         {
             int i = 0;
             foreach(var item in TreeData.GetSet1() )
             {
+                //if item is leaf add to leaf list
                 if(item.IsLeaf)
                 {
                     i++;
                     string t = item.ToString();
                     LeafList.Add(t);
-                    //int count = (int)new Random().Next(0, item + 1);
-                    //return randomNodeUtil(root, count);
                 }
             }
         }
-       
-        public void GetRandomThird()
+       /// <summary>
+       /// Get a random leaf out of the leaf List
+       /// </summary>
+        public void GetRandomLeaf()
         {
             FindLeaf();
-            int i = DeweyLibrary.Library.rnd.Next(LeafList.Count);
+            int i = Library.rnd.Next(LeafList.Count);
+            //Make Label equal to random leaf list item
             question.Text = LeafList[i];
-            GetCorrectParent(2);
+            //Get parents at level 2
+            GetRandomAnswers(2);
 
         }
+
         /// <summary>
-        /// Adding List to array of labels
+        /// Create List of the labels
         /// </summary>
         List<Label> Labels = new List<Label>();
         public void AnswerLabelsList()
@@ -208,38 +216,51 @@ namespace DeweyDecimalSystem.Call_Numbers
             Labels.Add(answer2);
             Labels.Add(answer3);
             Labels.Add(answer4);
-
-
         }
-        List<string> SecondIt = new List<string>();
+     
        
-       
-        public void GetCorrectParent( int level)
+       /// <summary>
+       /// Get Random Parents and one correct Parent
+       /// </summary>
+       /// <param name="level"></param>
+        public void GetRandomAnswers( int level)
         {
+            //Initialize labels to list
             AnswerLabelsList();
-            TreeNode<string> treeRoot = TreeData.GetSet1();
-            TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
-            TreeNode<string> ParentOfFound = (found.Parent).Parent;
-            int i = DeweyLibrary.Library.rnd.Next(Labels.Count);
-            Labels[i].Text = found.Parent.ToString();
-            CorrectOption = found.Parent.ToString();
-            int q = 0;
             foreach (var item in TreeData.GetSet1())
-            { if(item.Level==level)
+            {
+                //If the item is at the correct level add to Parent List
+                if (item.Level == level)
                 {
                     string t = item.ToString();
-                    SecondIt.Add(t);
-
+                    ParentList.Add(t);
                 }
-               
-            }
-            for (var x = 0; x<2; x++)
-            {
-                Labels[x].Text = SecondIt[x];
 
             }
+            //Add Parentlist to Labels
+            for (var x = 0; x < 4; x++)
+            {
+                Labels[x].Text = ParentList[x];
+            }
+
+            ReplaceWithCorrectAnswer();
 
         }
+
+        private void ReplaceWithCorrectAnswer()
+        {
+            //Find Correct Answer
+            TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
+            //Find Parent of Correct Answer
+            TreeNode<string> ParentOfFound = (found.Parent).Parent;
+            //Get random number between 1-4
+            int i = Library.rnd.Next(Labels.Count);
+            //Replace one label with the correct answer
+            Labels[i].Text = found.Parent.ToString();
+            //save correct choice 
+            CorrectOption = found.Parent.ToString();
+        }
+
         public static string SearchExample(string searchItem)
         {
             TreeNode<string> treeRoot = TreeData.GetSet1();
@@ -258,6 +279,15 @@ namespace DeweyDecimalSystem.Call_Numbers
                 Console.WriteLine("Not found: " + searchItem);
                 Console.ReadLine();
             }
+        }
+        /// <summary>
+        /// Add to button click counter and calls Message after user chooses answer
+        /// </summary>
+        private void ButtonActions(Label lbl)
+        {
+            UserAnswer = lbl.Text;
+            MessageAfterButton();
+            buttonClicks++;
         }
     }
    
