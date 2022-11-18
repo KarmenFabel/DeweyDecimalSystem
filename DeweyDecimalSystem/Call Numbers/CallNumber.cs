@@ -18,10 +18,12 @@ namespace DeweyDecimalSystem.Call_Numbers
 {
     public partial class CallNumber : Form
     {
+        public string UserAnswer { get; set; }
+       public int buttonClicks = 0;
         public CallNumber()
         {
             InitializeComponent();
-            AnswerLabelsList();
+            
            // CreateTree();
             GetRandomThird();
 
@@ -47,6 +49,35 @@ namespace DeweyDecimalSystem.Call_Numbers
             readJSON();
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserAnswer = answer1.Text;
+            MessageAfterButton();
+            buttonClicks++;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UserAnswer = answer2.Text;
+            MessageAfterButton();
+            buttonClicks++;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UserAnswer = answer3.Text;
+            MessageAfterButton();
+            buttonClicks++;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UserAnswer = answer4.Text;
+            MessageAfterButton();
+            buttonClicks++;
         }
     }
 }

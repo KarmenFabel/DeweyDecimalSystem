@@ -93,8 +93,11 @@ namespace DeweyDecimalSystem.Call_Numbers
                             TreeNode<string> node013 = node01.AddChild("013 Bibliographies of works by specific classes of authors");
                             TreeNode<string> node014 = node01.AddChild("014  Bibliographies of anonymous and pseudonymous works");
                         }
-                        
-                    }
+                    TreeNode<string> node02 = node0.AddChild("2172 - Test1");
+                    TreeNode<string> node03 = node0.AddChild("1231 - Test2");
+                    TreeNode<string> node04 = node0.AddChild("1313 - Test3");
+
+                }
                 TreeNode<string> node1 = root.AddChild("100 - Philosophy and Psychology");
                 {
                     TreeNode<string> node11 = node1.AddChild("120 - Epistemology");
