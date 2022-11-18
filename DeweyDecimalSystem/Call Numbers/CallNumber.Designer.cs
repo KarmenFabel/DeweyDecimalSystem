@@ -38,6 +38,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.answer4 = new System.Windows.Forms.Label();
             this.answer3 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.treeView2 = new System.Windows.Forms.TreeView();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +125,13 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.treeView1.Size = new System.Drawing.Size(323, 252);
             this.treeView1.TabIndex = 25;
             // 
+            // treeView2
+            // 
+            this.treeView2.Location = new System.Drawing.Point(587, 146);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(121, 97);
+            this.treeView2.TabIndex = 26;
+            // 
             // CallNumber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,6 +139,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.treeView2);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.answer4);
             this.Controls.Add(this.answer3);
@@ -158,5 +167,6 @@ namespace DeweyDecimalSystem.Call_Numbers
         private System.Windows.Forms.Label answer4;
         private System.Windows.Forms.Label answer3;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView treeView2;
     }
 }

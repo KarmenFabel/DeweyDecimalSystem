@@ -21,8 +21,11 @@ namespace DeweyDecimalSystem.Call_Numbers
         public CallNumber()
         {
             InitializeComponent();
-            CreateTree();
-            //TreeData.GetSet1();
+            AnswerLabelsList();
+           // CreateTree();
+            GetRandomThird();
+
+            //myTree.FindTreeNode
 
         }
 

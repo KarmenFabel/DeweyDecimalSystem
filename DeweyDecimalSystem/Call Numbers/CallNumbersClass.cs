@@ -35,30 +35,14 @@ namespace DeweyDecimalSystem.Call_Numbers
             {
                 JToken root = JToken.Load(jsonReader);
                 DisplayTreeView(root, Path.GetFileNameWithoutExtension(GetPath()));
+            
             }
 
 
         }
-     
-        public static string SearchExample(string searchItem)
-        {
-            TreeNode<string> treeRoot = TreeData.GetSet1();
-                TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(searchItem));
+       
 
-                if (found != null)
-                {
-                    Console.WriteLine("Found: " + found);
-                    Console.ReadLine();
-                    return found.ToString();
-
-                }
-                else
-                {
-                    return "Not found";
-                    Console.WriteLine("Not found: " + searchItem);
-                    Console.ReadLine();
-                }
-            }
+      
         private void DisplayTreeView(JToken root, string rootName)
         {
            // treeView1.BeginUpdate();
@@ -77,6 +61,7 @@ namespace DeweyDecimalSystem.Call_Numbers
                 treeView1.EndUpdate();
             }
         }
+       
         private void AddNode(JToken token, TreeNode inTreeNode)
               {
                   if (token == null)
@@ -117,32 +102,37 @@ namespace DeweyDecimalSystem.Call_Numbers
             string jsonFile = File.ReadAllText(path);
           
             var jsonObject = JsonConvert.DeserializeObject<List<DeweyLibrary.Root>>(jsonFile);
+            
             foreach (var item in jsonObject)
             {
-                Console.WriteLine(item.callnumber);
-                Console.WriteLine(item.description);
-            }
-            TreeNode<string> tree = new TreeNode<string>("root");
-            { int i = 0;
-                foreach (var item in jsonObject)
-                { //root.AddChild("000 - General Knowledge");
-                    //TreeNode<string> (item.callnumber)= new TreeNode<string>(item.callnumber + item.description);
-
+               
+                myTree = new TreeNode<string>(item.callnumber + item.description);
+                {
+                    myTree.AddChild(item.SecondIteration.callnumber );
+                    myTree.AddChild(item.SecondIteration.description);
+                  
+                  
 
                 }
+
+                /* new TreeNode<string>(item.callnumber + item.description);
+                {
+                   
+                    new TreeNode<string>(item.SecondIteration.callnumber + item.SecondIteration.description);
+                    { 
+                      // new TreeNode<DeweyLibrary.ThirdIteration>(item.SecondIteration.ThirdIteration.ToArray());
+                        //new TreeNode<string> node1 = root.AddChild("000 Tester");
+                    }
+                }*/
+                
+
             }
-            return tree;
-
-                //Console.WriteLine(jsonObject.callnumber);
-                //  Console.WriteLine(jsonObject.description);
-
-
-
-
-
+            return myTree;
 
             }
        public static TreeNode<string> Call;
+        private static TreeNode<string> myTree;
+
         public void CreateTree()
         {
             var path = Path.GetFileName(GetPath());
@@ -155,9 +145,83 @@ namespace DeweyDecimalSystem.Call_Numbers
             // TreeNode<string> root = new TreeNode<string>("root");
            
         }
+        List<string> LeafList = new List<string>();
+    
+        public void FindLeaf()
+        {
+            int i = 0;
+            foreach(var item in TreeData.GetSet1() )
+            {
+                if(item.IsLeaf)
+                {
+                    i++;
+                    string t = item.ToString();
+                    LeafList.Add(t);
+                    //int count = (int)new Random().Next(0, item + 1);
+                    //return randomNodeUtil(root, count);
+                }
+            }
+        }
+        public void GetRandomThird()
+        {
+            FindLeaf();
+            int i = DeweyLibrary.Library.rnd.Next(LeafList.Count);
+            question.Text = LeafList[i];
+            GetCorrectParent();
+
+        }
+        /// <summary>
+        /// Adding List to array of labels
+        /// </summary>
+        List<Label> Labels = new List<Label>();
+        public void AnswerLabelsList()
+        {
+            Labels.Add(answer1);
+            Labels.Add(answer2);
+            Labels.Add(answer3);
+            Labels.Add(answer4);
+
+
+        }
+        
+       
+        public void GetCorrectParent()
+        { 
+            TreeNode<string> treeRoot = TreeData.GetSet1();
+            TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
+            TreeNode<string> ParentOfFound = (found.Parent).Parent;
+            int i = DeweyLibrary.Library.rnd.Next(Labels.Count);
+            Labels[i].Text = found.Parent.ToString();
+            for(var x = 0; x!=i; x++)
+            {
+                Labels[x].Text = ParentOfFound.Children.ToString();
+
+            }
+
+        }
+        public static string SearchExample(string searchItem)
+        {
+            TreeNode<string> treeRoot = TreeData.GetSet1();
+            TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(searchItem));
+
+            if (found != null)
+            {
+                Console.WriteLine("Found: " + found);
+                Console.ReadLine();
+                return found.ToString();
+
+            }
+            else
+            {
+                return "Not found";
+                Console.WriteLine("Not found: " + searchItem);
+                Console.ReadLine();
+            }
+        }
     }
    
 }
+
 
 //Reference:
 //How to recursively populate a TreeView with JSON data

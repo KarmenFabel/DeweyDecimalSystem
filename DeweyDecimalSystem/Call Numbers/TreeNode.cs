@@ -99,5 +99,6 @@ namespace DeweyDecimalSystem.Call_Numbers
         {
             return GetEnumerator();
         }
+     
     }
 }

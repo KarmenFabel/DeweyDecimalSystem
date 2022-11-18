@@ -63,48 +63,61 @@ namespace DeweyDecimalSystem.Call_Numbers
 
         public static TreeNode<string> GetSet1()
         {
-            var path = Path.GetFileName(GetPath());
-            string jsonFile = File.ReadAllText(path);
+            
 
-            var jsonObject = JsonConvert.DeserializeObject<List<Root>>(jsonFile);
+            
+           // var path = Path.GetFileName(GetPath());
+           // string jsonFile = File.ReadAllText(path);
+
+            //var jsonObject = JsonConvert.DeserializeObject<List<DeweyLibrary.Root>>(jsonFile);
 
             // var tree = new TreeNode ("root")
-            TreeNode<string> tree = new TreeNode<string>("root");
+           /* TreeNode<string> tree = new TreeNode<string>("root");
             {
                 foreach (var item in jsonObject)
                 {
                     new TreeNode<string>(item.callnumber + item.description);
 
 
-                }
+                }*/
 
-
-
-                TreeNode<Root> root = new TreeNode<Root>();
+                TreeNode<string> root = new TreeNode<string>("root");
                 {
-                    TreeNode<SecondIteration> Second = root.AddChild();
+                    TreeNode<string> node0 = root.AddChild("000 General Knowledge");
                     {
 
-                        TreeNode<string> node11 = node1.AddChild("010 - Bibliography");
+                        TreeNode<string> node01 = node0.AddChild("010 - Bibliography");
                         {
-                            TreeNode<string> node111 = node11.AddChild("011 Bibliographies ");
-                            TreeNode<string> node112 = node11.AddChild("012 Bibliographies of individuals");
-                            TreeNode<string> node113 = node11.AddChild("013 Bibliographies of works by specific classes of authors");
-                            TreeNode<string> node114 = node11.AddChild("014  Bibliographies of anonymous and pseudonymous works");
+                            TreeNode<string> node011 = node01.AddChild("011 Bibliographies ");
+                            TreeNode<string> node012 = node01.AddChild("012 Bibliographies of individuals");
+                            TreeNode<string> node013 = node01.AddChild("013 Bibliographies of works by specific classes of authors");
+                            TreeNode<string> node014 = node01.AddChild("014  Bibliographies of anonymous and pseudonymous works");
                         }
-                        TreeNode<string> node3 = root.AddChild("node3");
-                        {
-                            TreeNode<string> node30 = node3.AddChild("node30");
-                        }
+                        
                     }
-
+                TreeNode<string> node1 = root.AddChild("100 - Philosophy and Psychology");
+                {
+                    TreeNode<string> node11 = node1.AddChild("120 - Epistemology");
+                    {
+                        TreeNode<string> node111 = node11.AddChild("121 Epistemology (Theory of knowledge) ");
+                        TreeNode<string> node112 = node11.AddChild("122 Causation");
+                        TreeNode<string> node113 = node11.AddChild("123 Determinism & indeterminism");
+                        TreeNode<string> node114 = node11.AddChild("125 Not assigned or no longer used ");
+                        TreeNode<string> node115 = node11.AddChild("126 The self");
+                        TreeNode<string> node116 = node11.AddChild("127 The unconscious & the subconscious");
+                        TreeNode<string> node117 = node11.AddChild("128 Humankind ");
+                    }
                 }
-                return root;
+
+
+            }
+            return root;
             }
 
         }
     }
-    }
+
+    
 
     
     /*000 - General Knowledge
