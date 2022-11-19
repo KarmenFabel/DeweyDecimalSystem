@@ -196,7 +196,7 @@ namespace DeweyLibrary
     {
         public string callnumber { get; set; }
         public string description { get; set; }
-        public SecondIteration SecondIteration { get; set; }
+        public List<SecondIteration> SecondIteration { get; set; }
     }
 
     public class Root

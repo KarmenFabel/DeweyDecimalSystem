@@ -23,7 +23,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         public CallNumber()
         {
             InitializeComponent();
-            GetSet2();
+            GetTreeData();
             GetRandomLeaf();
         }
 
@@ -37,13 +37,13 @@ namespace DeweyDecimalSystem.Call_Numbers
         private void CallNumber_Load(object sender, EventArgs e)
         {
 
-            readJSON();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
             ButtonActions(answer1);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
