@@ -191,11 +191,18 @@ namespace DeweyLibrary
         public string deweyKey { get; set; }
         public string deweyDescrip { get; set; }
     }
-    public class Root
+  
+    public class Content
     {
         public string callnumber { get; set; }
         public string description { get; set; }
         public SecondIteration SecondIteration { get; set; }
+    }
+
+    public class Root
+    {
+        public string root { get; set; }
+        public List<Content> contents { get; set; }
     }
 
     public class SecondIteration
@@ -210,6 +217,8 @@ namespace DeweyLibrary
         public string callnumber { get; set; }
         public string description { get; set; }
     }
+
+
 
 
 

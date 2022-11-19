@@ -71,11 +71,13 @@ namespace DeweyDecimalSystem.Call_Numbers
            
 
             var jsonObject = JsonConvert.DeserializeObject<List<Root>>(jsonFile);
+            
             //var newJsonObj = JsonConvert.DeserializeObject(jsonFile);
-
+            
             //var tree = new TreeNode ("root")
             foreach (var thing in jsonObject)
             {
+
                 TreeNode<Root> tree = new TreeNode<DeweyLibrary.Root>(thing.callnumber + thing.description);
                 {
                     foreach (var item in tree)
@@ -85,16 +87,16 @@ namespace DeweyDecimalSystem.Call_Numbers
 
                     }
                 }
-            }*/
-           
+            }
+           */
 
             var path = Path.GetFileName(GetPath());
             string jsonFile = File.ReadAllText(path);
             
 
-            var jsonObject = JsonConvert.DeserializeObject<List<Root>>(jsonFile);
+            var jsonObject = JsonConvert.DeserializeObject<Root>(jsonFile);
       
-
+            
             TreeNode<string> root = new TreeNode<string>("root");
             {
                 TreeNode<string> node0 = root.AddChild("000 General Knowledge");

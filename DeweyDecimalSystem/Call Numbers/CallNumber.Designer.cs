@@ -129,7 +129,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(551, 94);
+            this.button1.Location = new System.Drawing.Point(660, 91);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 26;
@@ -139,7 +139,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(551, 132);
+            this.button2.Location = new System.Drawing.Point(660, 129);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 27;
@@ -149,7 +149,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(551, 182);
+            this.button3.Location = new System.Drawing.Point(660, 179);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
@@ -159,7 +159,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(551, 223);
+            this.button4.Location = new System.Drawing.Point(660, 220);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 29;

@@ -19,7 +19,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         //A list of all possible parents of the Correct option
         List<string> ParentList = new List<string>();
         //TreeData
-        TreeNode<string> treeRoot = TreeData.GetSet1();
+        TreeNode<string> treeRoot = GetSet2();
         public void MessageAfterButton()
         {
             //Finding the Node connected to the question
@@ -125,42 +125,59 @@ namespace DeweyDecimalSystem.Call_Numbers
                       Debug.WriteLine(string.Format("{0} not implemented", token.Type)); // JConstructor, JRaw
                   }
               }
+       // private static TreeNode<string> ParentNode;
         public static TreeNode<string> GetSet2()
         {
             var path = Path.GetFileName(GetPath());
             string jsonFile = File.ReadAllText(path);
           
-            var jsonObject = JsonConvert.DeserializeObject<List<DeweyLibrary.Root>>(jsonFile);
-            
-            foreach (var item in jsonObject)
+            var jsonObject = JsonConvert.DeserializeObject<Root>(jsonFile);
+            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+
+            int i = 0;
+            myTree = new TreeNode<string>(jsonObject.root);
             {
-               
-                myTree = new TreeNode<string>(item.callnumber + item.description);
+                foreach (var item in jsonObject.contents)
                 {
-                    myTree.AddChild(item.SecondIteration.callnumber );
-                    myTree.AddChild(item.SecondIteration.description);
-                  
-                  
+
+                    TreeNode<string> FirstIt = myTree.AddChild(item.callnumber + item.description);
+                    //myTree = new TreeNode<string>(); 
+                    {
+                        TreeNode<string> ParentNodeCall = FirstIt.AddChild(item.SecondIteration.callnumber + item.SecondIteration.description);
+                        //TreeNode<string> ParentNodeDesc = myTree.AddChild(item.SecondIteration.description);
+                        {
+                            foreach (var thing in item.SecondIteration.ThirdIteration)
+                            {
+                                //TreeNode<string> node01 = node0.AddChild("010 - Bibliography");
+
+                                TreeNode<string> ChildNodeCall = ParentNodeCall.AddChild(thing.callnumber + thing.description);
+                                // TreeNode<string> ChildNodeDesc= ParentNodeCall.AddChild(thing.description);
+                            }
+
+                        }
+
+
+                    }
+
+                    /* new TreeNode<string>(item.callnumber + item.description);
+                    {
+
+                        new TreeNode<string>(item.SecondIteration.callnumber + item.SecondIteration.description);
+                        { 
+                          // new TreeNode<DeweyLibrary.ThirdIteration>(item.SecondIteration.ThirdIteration.ToArray());
+                            //new TreeNode<string> node1 = root.AddChild("000 Tester");
+                        }
+                    }*/
+
 
                 }
-
-                /* new TreeNode<string>(item.callnumber + item.description);
-                {
-                   
-                    new TreeNode<string>(item.SecondIteration.callnumber + item.SecondIteration.description);
-                    { 
-                      // new TreeNode<DeweyLibrary.ThirdIteration>(item.SecondIteration.ThirdIteration.ToArray());
-                        //new TreeNode<string> node1 = root.AddChild("000 Tester");
-                    }
-                }*/
-                
-
             }
+           
             return myTree;
 
             }
        public static TreeNode<string> Call;
-        private static TreeNode<string> myTree;
+        private static TreeNode<string> myTree { get; set; }
 
         public void CreateTree()
         {
@@ -178,17 +195,22 @@ namespace DeweyDecimalSystem.Call_Numbers
     /// <summary>
     /// Find lowest point of the tree
     /// </summary>
-        public void FindLeaf()
+        public void FindLeaf(TreeNode<string> p, List<string> leaves)
         {
+
             int i = 0;
-            foreach(var item in TreeData.GetSet1() )
+            foreach(var item in p.Children)
             {
                 //if item is leaf add to leaf list
                 if(item.IsLeaf)
                 {
                     i++;
                     string t = item.ToString();
-                    LeafList.Add(t);
+                    leaves.Add(t);
+                }
+                else
+                {
+                    FindLeaf(item, leaves);
                 }
             }
         }
@@ -197,7 +219,7 @@ namespace DeweyDecimalSystem.Call_Numbers
        /// </summary>
         public void GetRandomLeaf()
         {
-            FindLeaf();
+            FindLeaf(myTree, LeafList);
             int i = Library.rnd.Next(LeafList.Count);
             //Make Label equal to random leaf list item
             question.Text = LeafList[i];
@@ -227,7 +249,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         {
             //Initialize labels to list
             AnswerLabelsList();
-            foreach (var item in TreeData.GetSet1())
+            foreach (var item in GetSet2())
             {
                 //If the item is at the correct level add to Parent List
                 if (item.Level == level)

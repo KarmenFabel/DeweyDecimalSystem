@@ -23,6 +23,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         public CallNumber()
         {
             InitializeComponent();
+            GetSet2();
             GetRandomLeaf();
         }
 
