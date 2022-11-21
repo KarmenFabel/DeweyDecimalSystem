@@ -128,42 +128,50 @@ namespace DeweyDecimalSystem.Call_Numbers
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(684, 146);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 26;
             this.button1.Text = "This One!";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(684, 184);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 27;
             this.button2.Text = "This One!";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(684, 234);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
             this.button3.Text = "This One!";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(160)))), ((int)(((byte)(232)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Location = new System.Drawing.Point(684, 275);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 29;
             this.button4.Text = "This One!";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // newProgressBar1
@@ -171,7 +179,7 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.newProgressBar1.Location = new System.Drawing.Point(0, 244);
             this.newProgressBar1.Name = "newProgressBar1";
             this.newProgressBar1.Size = new System.Drawing.Size(237, 23);
-            this.newProgressBar1.TabIndex = 30;
+            this.newProgressBar1.TabIndex = 12;
             // 
             // richTextBox1
             // 
@@ -207,7 +215,6 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.Controls.Add(this.menuStrip2);
             this.Name = "CallNumber";
             this.Text = "CallNumber";
-            this.Load += new System.EventHandler(this.CallNumber_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -228,7 +235,7 @@ namespace DeweyDecimalSystem.Call_Numbers
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private Replace_Books.NewProgressBar newProgressBar1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        public Replace_Books.NewProgressBar newProgressBar1;
     }
 }

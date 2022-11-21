@@ -10,7 +10,7 @@ namespace DeweyDecimalSystem.Call_Numbers
 
     public class TreeNode<T> : IEnumerable<TreeNode<T>>
     {
-        private T child;
+       
 
         public T Data { get; set; }
 

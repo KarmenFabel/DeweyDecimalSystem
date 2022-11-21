@@ -6,7 +6,7 @@ namespace DeweyLibrary
 {
     public class Library
     {
-        //Global random called
+        //Global random
         public static Random rnd = new Random();
         /*
   ___                _                       ___               _        
@@ -33,7 +33,7 @@ namespace DeweyLibrary
             for (int i = 0; i < Dewey.Count; i++) ;
             return Dewey;
         }
-       
+
         /// <summary>
         /// Selection Sort method
         /// </summary>
@@ -63,9 +63,9 @@ namespace DeweyLibrary
             return sorted;
         }
 
-       public static int splitsec = 0;
-       public static int secs = 0;
-       public static int mins = 0;
+        public static int splitsec = 0;
+        public static int secs = 0;
+        public static int mins = 0;
         /*
           ___      _                _     _    __          _                     _                           
          |_ _|  __| |  ___   _ _   | |_  (_)  / _|  _  _  (_)  _ _    __ _      /_\    _ _   ___   __ _   ___
@@ -79,11 +79,11 @@ namespace DeweyLibrary
         //HashSet so that the random numbers are not repeating
         public static HashSet<int> randoms = new HashSet<int>();
         //Four RandomItems
-       public static List<string> FourRandomItems = new List<string>();
-       
+        public static List<string> FourRandomItems = new List<string>();
+
         //Four Call numbers of the answers
         public static List<string> sevenRandoms = new List<string>();
-        
+
         //Right and Wrong Point calculator
         public static int Points { get; set; }
         public static int WrongPoints { get; set; }
@@ -112,7 +112,7 @@ namespace DeweyLibrary
             return randomizedList;
         }
         //Key for Dictionary
-       public static int key { get; set; }
+        public static int key { get; set; }
         public static Dictionary<int, DeweyDecimalGroup> deweyDictionary = deweyGroups();
         //Creation of Dictionary
         public static Dictionary<int, DeweyDecimalGroup> deweyGroups()
@@ -180,10 +180,28 @@ namespace DeweyLibrary
             dewDict.Add(7, dewey8);
             dewDict.Add(8, dewey9);
             dewDict.Add(9, dewey10);
-            //dewDict.Add(dewey10.deweyKey, dewey10);
             return dewDict;
         }
-     
+
+        /*
+         
+   ___          _   _   _  _                  _                     
+  / __|  __ _  | | | | | \| |  _  _   _ __   | |__   ___   _ _   ___
+ | (__  / _` | | | | | | .` | | || | | '  \  | '_ \ / -_) | '_| (_-<
+  \___| \__,_| |_| |_| |_|\_|  \_,_| |_|_|_| |_.__/ \___| |_|   /__/
+                                                                    
+*/
+        //The Correct option of the four labels
+        public static string CorrectOption { get; set; }
+        //A list of all available leaves
+        public static List<string> LeafList = new List<string>();
+        //A list of all possible parents of the Correct option
+        public static List<string> ParentList = new List<string>();
+
+        //User Answer
+        public static string UserAnswer { get; set; }
+
+
     }
     public class DeweyDecimalGroup
     {
@@ -191,7 +209,12 @@ namespace DeweyLibrary
         public string deweyKey { get; set; }
         public string deweyDescrip { get; set; }
     }
-  
+    /*
+     _   ___    ___    _  _   _____                      ___                                  _   
+  _ | | / __|  / _ \  | \| | |_   _|  _ _   ___   ___   / __|  ___   _ _   __ __  ___   _ _  | |_ 
+ | || | \__ \ | (_) | | .` |   | |   | '_| / -_) / -_) | (__  / _ \ | ' \  \ V / / -_) | '_| |  _|
+  \__/  |___/  \___/  |_|\_|   |_|   |_|   \___| \___|  \___| \___/ |_||_|  \_/  \___| |_|    \__|
+     */
     public class Content
     {
         public string callnumber { get; set; }

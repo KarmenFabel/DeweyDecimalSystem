@@ -36,40 +36,50 @@ namespace DeweyDecimalSystem
         /// <param name="answer"></param>
         public void PopulatingLabels(String question, String answer)
         {
-            lblquestion.Text = question;
-            lblAnswer.Text = answer;
-            Label[] labels, questions;
-            AllLabels(out labels, out questions);
+            try
+            {
 
-            while (Library.randoms.Count < 7)
-            {
-                Library.randoms.Add(Library.rnd.Next(0, 9));
-            }
-            foreach (var item in Library.randoms)
-            {
-                if (lblquestion.Text == Library.Description)
-                {
-                    DescAnswer(item);
-                }
-                else
-                {
-                    CallAnswer(item);
-                }
-            }
-            //Make answers appear in random order
-            List<string> sevenRandoms2 = Library.Randomize(Library.sevenRandoms);
-            //Make answers appear in random order again to be even more random
-            List<string> sevenRandoms3 = Library.Randomize(sevenRandoms2);
 
-            for (var i = 0; i != sevenRandoms3.Count; i++)
-            {
-                //foreach label add a dewey list number
-                labels[i].Text = sevenRandoms3[i].ToString();
+                lblquestion.Text = question;
+                lblAnswer.Text = answer;
+                Label[] labels, questions;
+                AllLabels(out labels, out questions);
+
+                while (Library.randoms.Count < 7)
+                {
+                    Library.randoms.Add(Library.rnd.Next(0, 9));
+                }
+                foreach (var item in Library.randoms)
+                {
+                    if (lblquestion.Text == Library.Description)
+                    {
+                        DescAnswer(item);
+                    }
+                    else
+                    {
+                        CallAnswer(item);
+                    }
+                }
+                //Make answers appear in random order
+                List<string> sevenRandoms2 = Library.Randomize(Library.sevenRandoms);
+                //Make answers appear in random order again to be even more random
+                List<string> sevenRandoms3 = Library.Randomize(sevenRandoms2);
+
+                for (var i = 0; i != sevenRandoms3.Count; i++)
+                {
+                    //foreach label add a dewey list number
+                    labels[i].Text = sevenRandoms3[i].ToString();
+                }
+                List<string> fourRandoms = Library.Randomize(Library.FourRandomItems);
+                for (var i = 0; i != 4; i++)
+                {
+                    questions[i].Text = fourRandoms[i].ToString();
+                }
             }
-            List<string> fourRandoms = Library.Randomize(Library.FourRandomItems);
-            for (var i = 0; i != 4; i++)
+            catch (Exception e)
             {
-                questions[i].Text = fourRandoms[i].ToString();
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+
             }
         }
         /// <summary>
@@ -111,32 +121,42 @@ namespace DeweyDecimalSystem
         /// Finding Answers
         /// </summary>
         /// <param name="panel"></param>
-        
+
         public void Answers(FlowLayoutPanel panel)
         {
-            foreach (var item in panel.Controls)
+            try
             {
-                FindQuestions(item);
 
-                if (item is FlowLayoutPanel)
+
+                foreach (var item in panel.Controls)
                 {
-                    FlowLayoutPanel answer = (FlowLayoutPanel)item;
-                    foreach (var ans in answer.Controls)
-                        if (ans is Label)
-                        {
-                            KeyValuePair<int, DeweyDecimalGroup> pair = Library.deweyDictionary.ElementAt(Library.key);
-                            Label label = (Label)ans;
-                            if (lblquestion.Text == Library.Description)
-                            {
-                                AddPointsDescriptionAnswered(pair, label);
-                            }
-                            else
-                            {
-                                AddPointsCallNumAnswered(pair, label);
-                            }
+                    FindQuestions(item);
 
-                        }
+                    if (item is FlowLayoutPanel)
+                    {
+                        FlowLayoutPanel answer = (FlowLayoutPanel)item;
+                        foreach (var ans in answer.Controls)
+                            if (ans is Label)
+                            {
+                                KeyValuePair<int, DeweyDecimalGroup> pair = Library.deweyDictionary.ElementAt(Library.key);
+                                Label label = (Label)ans;
+                                if (lblquestion.Text == Library.Description)
+                                {
+                                    AddPointsDescriptionAnswered(pair, label);
+                                }
+                                else
+                                {
+                                    AddPointsCallNumAnswered(pair, label);
+                                }
+
+                            }
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+
             }
         }
         /// <summary>
@@ -144,22 +164,32 @@ namespace DeweyDecimalSystem
         /// </summary>
         /// <param name="pair"></param>
         /// <param name="label"></param>
-        private  void AddPointsCallNumAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
+        private void AddPointsCallNumAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
         {
-            if (label.Text == pair.Value.deweyDescrip)
+            try
             {
-                Library.PointCounter();
-                Console.WriteLine(label.Text + "is equal to" +
-                     pair.Value.deweyDescrip);
-                Score();
-                timer1.Start();
+
+
+                if (label.Text == pair.Value.deweyDescrip)
+                {
+                    Library.PointCounter();
+                    Console.WriteLine(label.Text + "is equal to" +
+                         pair.Value.deweyDescrip);
+                    Score();
+                    timer1.Start();
+                }
+                else
+                {
+                    Library.WrongPointCounter();
+                    Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
+                       pair.Value.deweyDescrip);
+                    timer1.Start();
+                }
             }
-            else
+            catch (Exception e)
             {
-                Library.WrongPointCounter();
-                Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
-                   pair.Value.deweyDescrip);
-                timer1.Start();
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+
             }
         }
 
@@ -170,19 +200,29 @@ namespace DeweyDecimalSystem
         /// <param name="label"></param>
         private void AddPointsDescriptionAnswered(KeyValuePair<int, DeweyDecimalGroup> pair, Label label)
         {
-            if (label.Text == pair.Value.deweyKey.ToString())
+            try
             {
-                Library.PointCounter();
-                Console.WriteLine(label.Text + "is equal to" +
-                     Library.key.ToString());
-                
+
+
+                if (label.Text == pair.Value.deweyKey.ToString())
+                {
+                    Library.PointCounter();
+                    Console.WriteLine(label.Text + "is equal to" +
+                         Library.key.ToString());
+
+                }
+                else
+                {
+                    Library.WrongPointCounter();
+                    Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
+                       Library.key.ToString());
+
+                }
             }
-            else
+            catch (Exception e)
             {
-                Library.WrongPointCounter();
-                Console.WriteLine("Incorrect" + label.Text + " is not equal to" +
-                   Library.key.ToString());
-             
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+
             }
         }
         /// <summary>
@@ -192,16 +232,26 @@ namespace DeweyDecimalSystem
 
         private void FindQuestions(object item)
         {
-            if (item is Label)
+            try
             {
-                if (lblquestion.Text == Library.Description)
+
+
+                if (item is Label)
                 {
-                    DescriptionIsQuestion(item);
+                    if (lblquestion.Text == Library.Description)
+                    {
+                        DescriptionIsQuestion(item);
+                    }
+                    else
+                    {
+                        CallIsQuestion(item);
+                    }
                 }
-                else
-                {
-                    CallIsQuestion(item);
-                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+
             }
         }
         /// <summary>
@@ -229,11 +279,11 @@ namespace DeweyDecimalSystem
            .FirstOrDefault();
         }
         public void PanelCorrect()
-        { 
-                Answers(flPanel1);
-                Answers(flPanel2);
-                Answers(flPanel6);
-                Answers(flPanel7);
+        {
+            Answers(flPanel1);
+            Answers(flPanel2);
+            Answers(flPanel6);
+            Answers(flPanel7);
         }
         /// <summary>
         /// Clear screen to add panels back in place and clear Lists
@@ -247,10 +297,7 @@ namespace DeweyDecimalSystem
             flowLayoutPanel1.Controls.Add(answer5);
             flowLayoutPanel1.Controls.Add(answer6);
             flowLayoutPanel1.Controls.Add(answer7);
-
-
-           // this.Controls.Clear();
-            //this.InitializeComponent();
+            //Clear Lists
             Library.FourRandomItems.Clear();
             Library.sevenRandoms.Clear();
         }
@@ -259,13 +306,13 @@ namespace DeweyDecimalSystem
         /// </summary>
         private void EndScoreMessage()
         {
-            
+
             MessageBox.Show("You got " + Library.Points.ToString() + " Correct \r\n\r\n and you got " +
-                            Library.WrongPoints.ToString() + " incorrect" );
-           //Clear points if user goes to main screen and then go back to this page
-            Library.Points =0;
-            Library.WrongPoints =0;
-           
+                            Library.WrongPoints.ToString() + " incorrect");
+            //Clear points if user goes to main screen and then go back to this page
+            Library.Points = 0;
+            Library.WrongPoints = 0;
+
         }
 
 

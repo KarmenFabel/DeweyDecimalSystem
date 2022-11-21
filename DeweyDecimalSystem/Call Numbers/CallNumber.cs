@@ -1,29 +1,15 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
-
-
 
 namespace DeweyDecimalSystem.Call_Numbers
 {
     public partial class CallNumber : Form
     {
-        public string UserAnswer { get; set; }
-       public int buttonClicks = 0;
+
         public CallNumber()
         {
             InitializeComponent();
-            GetTreeData();
+            TreeData.GetTreeData();
             GetRandomLeaf();
         }
 
@@ -33,24 +19,14 @@ namespace DeweyDecimalSystem.Call_Numbers
             this.Hide();
             MP.ShowDialog();
         }
-
-        private void CallNumber_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            
             ButtonActions(answer1);
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
             ButtonActions(answer2);
-
         }
 
         private void button3_Click(object sender, EventArgs e)

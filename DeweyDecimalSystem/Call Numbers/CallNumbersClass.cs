@@ -1,177 +1,179 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using DeweyLibrary;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using DeweyLibrary;
-using System.Linq;
+
 
 namespace DeweyDecimalSystem.Call_Numbers
 {
     public partial class CallNumber
     {
-        //The Correct option of the four labels
-        public string CorrectOption { get; set; }
-        //A list of all available leaves
-        List<string> LeafList = new List<string>();
-        //A list of all possible parents of the Correct option
-        List<string> ParentList = new List<string>();
-        private static TreeNode<string> myTree { get; set; }
-
+        /// <summary>
+        /// Find if answers are correct and if round is over
+        /// </summary>
         public void MessageAfterButton()
         {
-            //Finding the Node connected to the question
-            TreeNode<string> found = GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
-            //If userAnswer is equal to the parent of the question
-            if (UserAnswer == found.Parent.ToString())
+            try
             {
-                
-                //MessageBox.Show("Correct! " + UserAnswer +" is in the" + found.Parent.ToString() + " Category");
-                newProgressBar1.Increment(1);
-                if (newProgressBar1.Value == 10)
+                //Finding the Node connected to the question
+                TreeNode<string> found = TreeData.GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
+                //If userAnswer is equal to the parent of the question
+                if (Library.UserAnswer == found.Parent.ToString())
                 {
-                    
-
-                    MessageBox.Show("Weldone! You Completed the quiz! " );
-
-                }
-            } 
-            else
-            {
-                MessageBox.Show("Incorrect. The correct answer is: " + found.Parent.ToString());
-            }
-            TreeNode<string> foundParent =  GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(found.Parent.ToString()));
-            //Counts buttonClicks to end when User went through all iterations
-            if (!foundParent.Parent.ToString().Contains("root"))
-            {
-                //Set label to correct answer
-                question.Text = CorrectOption;
-                //Clear lists
-                ParentList.Clear();
-                Labels.Clear();
-
-                //get the higher level parent
-                GetRandomAnswers(1);
-
-            }
-            else
-            {
-                
-                MessageBox.Show("Weldone! You completed the round!");
-                //Set label to correct answer
-                question.Text = CorrectOption;
-                //Clear lists
-                ParentList.Clear();
-                Labels.Clear();
-             
-                GetRandomLeaf();
-                buttonClicks = 0;
-                //get the higher level parent
-                GetRandomAnswers(2);
-
-
-            }
-        }
-        
-        public static string GetPath()
-        {
-            //Get json file containing all Dewey Information
-            string executableLocation = Path.GetDirectoryName(
-        Assembly.GetExecutingAssembly().Location);
-           // string path = Path.Combine(executableLocation, "FindingCallNumbers.json");
-            string path = Path.Combine(executableLocation, "FindingCallNumberswArray.json");
-            return path;
-        }
-
-       
-       
-      
-       // private static TreeNode<string> ParentNode;
-        public static TreeNode<string> GetTreeData()
-        {
-            var path = Path.GetFileName(GetPath());
-            string jsonFile = File.ReadAllText(path);
-            var jsonObject = JsonConvert.DeserializeObject<Root>(jsonFile);
-            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-
-          
-            myTree = new TreeNode<string>(jsonObject.root);
-            {
-                foreach (var item in jsonObject.contents)
-                {
-
-                    TreeNode<string> FirstIt = myTree.AddChild(item.callnumber + " " + item.description);
-                    //myTree = new TreeNode<string>(); 
+                    newProgressBar1.Increment(10);
+                    if (newProgressBar1.Value == newProgressBar1.Maximum)
                     {
-                        foreach (var newThing in item.SecondIteration)
-                        {
-                            TreeNode<string> ParentNodeCall = FirstIt.AddChild(newThing.callnumber + " " + newThing.description);
-                            //TreeNode<string> ParentNodeDesc = myTree.AddChild(item.SecondIteration.description);
-                            {
-                                foreach (var thing in newThing.ThirdIteration)
-                                {
-                                    
-
-                                    TreeNode<string> ChildNodeCall = ParentNodeCall.AddChild(thing.callnumber + " " + thing.description);
-                                    // TreeNode<string> ChildNodeDesc= ParentNodeCall.AddChild(thing.description);
-                                }
-
-                            }
-                        }
-                        
-
-
+                        EndOfRoundMessageBox();
+                        ClearLists();
+                        //Implement all classes needed to reset questions
+                        GetRandomLeaf();
+                        TreeData.GetTreeData();
+                        //get the higher level parent
+                        GetRandomAnswers(2);
                     }
-                }
-            }
-           
-            return myTree;
-
-            }
- 
-       
-        
-    /// <summary>
-    /// Find lowest point of the tree
-    /// </summary>
-        public void FindLeaf(TreeNode<string> p, List<string> leaves)
-        {
-            
-            int i = 0;
-            foreach(var item in p.Children)
-            {
-                //if item is leaf add to leaf list
-                if(item.IsLeaf)
-                {
-                    i++;
-                    string t = item.ToString();
-                    leaves.Add(t);
                 }
                 else
                 {
-                    FindLeaf(item, leaves);
+                    MessageBox.Show("Incorrect. The correct answer is: " + found.Parent.ToString());
+                    //Set label to correct answer
+                    question.Text = Library.CorrectOption.Remove(0, 4);
+                    ClearLists();
+                    GetRandomLeaf();
+
+                    //get the higher level parent
+                    GetRandomAnswers(2);
+                }
+                TreeNode<string> foundParent = TreeData.GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(found.Parent.ToString()));
+                //Counts buttonClicks to end when User went through all iterations
+                if (!foundParent.Parent.ToString().Contains("root"))
+                {
+                    //Set label to correct answer
+                    string questionShort = foundParent.ToString().Remove(0, 4); //Removes the code segment
+                    question.Text = questionShort;
+                    ClearLists();
+                    //get the higher level parent
+                    GetRandomAnswers(1);
+
+                }
+                else
+                {
+                    try
+                    {
+                        //Set label to correct answer
+                        string questionShort = Library.CorrectOption.Remove(0, 4); //Removes the code segment
+                        question.Text = questionShort;
+                        ClearLists();
+                        GetRandomLeaf();
+                        //get the higher level parent
+                        GetRandomAnswers(2);
+
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+                    }
+
                 }
             }
+            catch (Exception e)
+            {
+
+
+            }
         }
-       /// <summary>
-       /// Get a random leaf out of the leaf List
-       /// </summary>
+        /// <summary>
+        /// Clear lists after each round
+        /// </summary>
+        private void ClearLists()
+        {
+            //Clear lists
+            Library.ParentList.Clear();
+            Labels.Clear();
+        }
+        /// <summary>
+        /// End of game message asking users if they want to play again
+        /// </summary>
+        private void EndOfRoundMessageBox()
+        {
+            var title = "Weldone! You Completed the quiz! ";
+            var message = "\r\n Would you like to play again?";
+            var result = MessageBox.Show(
+                message,   // the message to show
+                title,
+                MessageBoxButtons.YesNo,  // show two buttons: Yes and No
+                MessageBoxIcon.Question);
+
+            switch (result)
+            {
+                case DialogResult.Yes:   // Yes button pressed continue game
+                                         //reset component
+                    this.InitializeComponent();
+                    Library.ParentList.Clear();
+                    Labels.Clear();
+                    //Implement all classes needed to reset questions
+                    GetRandomLeaf();
+                    TreeData.GetTreeData();
+                    //get the higher level parent
+                    GetRandomAnswers(2);
+                    break;
+                case DialogResult.No:    // No button pressed to go to main menu
+                    MainPage MP = new MainPage();
+                    this.Hide();
+                    MP.ShowDialog();
+                    break;
+                default:                 // Neither Yes nor No pressed (just in case)
+                    MessageBox.Show("Nothing was Pressed");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Find lowest point of the tree
+        /// </summary>
+        public void FindLeaf(TreeNode<string> p, List<string> leaves)
+        {
+            try
+            {
+                int i = 0;
+                foreach (var item in p.Children)
+                {
+                    //if item is leaf add to leaf list
+                    if (item.IsLeaf)
+                    {
+                        i++;
+                        string t = item.ToString();
+                        leaves.Add(t);
+                    }
+                    else
+                    {
+                        FindLeaf(item, leaves);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+            }
+        }
+        /// <summary>
+        /// Get a random leaf out of the leaf List
+        /// </summary>
         public void GetRandomLeaf()
         {
-            
-            FindLeaf(myTree, LeafList);
-            int i = Library.rnd.Next(LeafList.Count);
-            //Make Label equal to random leaf list item
-            
-
-            string questionShort = LeafList[i].Remove(0, 4); //Removes the code segment
-            question.Text = questionShort;
-            //Get parents at level 2
-            GetRandomAnswers(2);
-
+            try
+            {
+                FindLeaf(TreeData.GetTreeData(), Library.LeafList);
+                int i = Library.rnd.Next(Library.LeafList.Count);
+                //Make Label equal to random leaf list item
+                string questionShort = Library.LeafList[i].Remove(0, 4); //Removes the code segment
+                question.Text = questionShort;
+                //Get parents at level 2
+                GetRandomAnswers(2);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+            }
         }
 
         /// <summary>
@@ -180,91 +182,90 @@ namespace DeweyDecimalSystem.Call_Numbers
         List<Label> Labels = new List<Label>();
         public void AnswerLabelsList()
         {
-            Labels.Add(answer1);
-            Labels.Add(answer2);
-            Labels.Add(answer3);
-            Labels.Add(answer4);
-        }
-     
-       
-       /// <summary>
-       /// Get Random Parents and one correct Parent
-       /// </summary>
-       /// <param name="level"></param>
-        public void GetRandomAnswers( int level)
-        {
-            
-            //Initialize labels to list
-            AnswerLabelsList();
-            foreach (var item in GetTreeData())
+            try
             {
-                //If the item is at the correct level add to Parent List
-                if (item.Level == level)
+                Labels.Add(answer1);
+                Labels.Add(answer2);
+                Labels.Add(answer3);
+                Labels.Add(answer4);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+            }
+
+        }
+
+        /// <summary>
+        /// Get Random Parents and one correct Parent
+        /// </summary>
+        /// <param name="level"></param>
+        public void GetRandomAnswers(int level)
+        {
+            try
+            {
+                //Initialize labels to list
+                AnswerLabelsList();
+                foreach (var item in TreeData.GetTreeData())
                 {
-                    string t = item.ToString();
-                    ParentList.Add(t);
+                    if (item.Level == level)
+                    {
+                        string t = item.ToString();
+                        Library.ParentList.Add(t);
+                    }
+
+                }
+                //Create a list of random numbers to populate the labels with (as its location)
+                int[] FourRandoms = new int[4];
+                for (int x = 0; x < 4; x++)
+                {
+                    FourRandoms[x] = Library.rnd.Next(Library.ParentList.Count);
                 }
 
-            }
-            int i = Library.rnd.Next(ParentList.Count);
-            foreach (var item in Labels)
-            {
-                item.Text =(ParentList[i]);
-            }
-            //Make Label equal to random leaf list item
-            //question.Text = LeafList[i];
-            //Add Parentlist to Labels
-            for (var x = 0; x < 4; x++)
-            {
-                Labels[x].Text = ParentList[x];
+                for (var x = 0; x < 4; x++)
+                {
+                    //use random numbers to get a random object in the list
+                    Labels[x].Text = Library.ParentList[FourRandoms[x]];
+                }
+                ReplaceWithCorrectAnswer();
+
             }
 
-            ReplaceWithCorrectAnswer();
+            catch (Exception e)
+            {
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
+            }
 
         }
-
+        /// <summary>
+        /// Replace one random label with the correct answer
+        /// </summary>
         private void ReplaceWithCorrectAnswer()
         {
-            //Find Correct Answer
-            TreeNode<string> found = GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
-           
-            //Get random number between 1-4
-            int i = Library.rnd.Next(Labels.Count);
-           /* foreach( var item in Labels)
+            try
             {
-                if (item.Text.Contains(found.Parent.ToString()))
+                //Find Correct Answer
+                TreeNode<string> found = TreeData.GetTreeData().FindTreeNode(node => node.Data != null && node.Data.Contains(question.Text));
+
+                //Get random number between 1-4
+                int i = Library.rnd.Next(Labels.Count);
+                //Do not add correct number if already in list
+                foreach (var item in Labels)
                 {
-                    return;
+                    if (item.Text.Contains(found.Parent.ToString()))
+                    {
+                        return;
+                    }
                 }
-                return;
 
-            }*/
-          
-   //Replace one label with the correct answer
-            
-           
+                //Replace one label with the correct answer
                 Labels[i].Text = found.Parent.ToString();
-            //save correct choice 
-            CorrectOption = found.Parent.ToString();
-        }
-
-        public static string SearchExample(string searchItem)
-        {
-            TreeNode<string> treeRoot = TreeData.GetSet1();
-            TreeNode<string> found = treeRoot.FindTreeNode(node => node.Data != null && node.Data.Contains(searchItem));
-
-            if (found != null)
-            {
-                Console.WriteLine("Found: " + found);
-                Console.ReadLine();
-                return found.ToString();
-
+                //save correct choice 
+                Library.CorrectOption = found.Parent.ToString();
             }
-            else
+            catch (Exception e)
             {
-                return "Not found";
-                Console.WriteLine("Not found: " + searchItem);
-                Console.ReadLine();
+                MessageBox.Show("Oh No! Something went wrong! " + e.ToString());
             }
         }
         /// <summary>
@@ -272,16 +273,26 @@ namespace DeweyDecimalSystem.Call_Numbers
         /// </summary>
         private void ButtonActions(Label lbl)
         {
-            UserAnswer = lbl.Text;
+            Library.UserAnswer = lbl.Text;
+            //Each button click goes to After button actions
             MessageAfterButton();
-            buttonClicks++;
         }
     }
-   
 }
-
+/*
+ 
+  ___             _    ___     __   ___   _   _       
+ | __|  _ _    __| |  / _ \   / _| | __| (_) | |  ___ 
+ | _|  | ' \  / _` | | (_) | |  _| | _|  | | | | / -_)
+ |___| |_||_| \__,_|  \___/  |_|   |_|   |_| |_| \___|
+                                                      
+*/
 
 //Reference:
 //How to recursively populate a TreeView with JSON data
 //https://stackoverflow.com/questions/39673815/how-to-recursively-populate-a-treeview-with-json-data
+//Comment Styling
+//http://www.patorjk.com/software/taag/#p=display&h=0&f=Small&t=Github
+//ProgresBar
+//https://stackoverflow.com/questions/22526934/check-if-progressbar-is-filled
 
